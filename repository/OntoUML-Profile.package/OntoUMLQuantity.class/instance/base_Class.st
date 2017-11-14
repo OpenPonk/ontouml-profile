@@ -1,3 +1,3 @@
-accessing
+accessing - Object
 base_Class
-	^ base_Class
+	^ (sharedGeneralizations at: #Object) base_Class

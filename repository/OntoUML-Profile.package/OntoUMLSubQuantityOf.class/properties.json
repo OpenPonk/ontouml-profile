@@ -1,15 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "OPUMLElement",
-	"category" : "OntoUML-Profile-Metamodel",
+	"super" : "OntoUMLElement",
+	"category" : "OntoUML-Profile-OntoUML-Profile",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"base_Association",
-		"essential",
-		"inseparable"
-	],
+	"instvars" : [ ],
 	"name" : "OntoUMLSubQuantityOf",
 	"type" : "normal"
 }

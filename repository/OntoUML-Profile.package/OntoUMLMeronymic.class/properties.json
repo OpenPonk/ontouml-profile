@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "OntoUMLElement",
+	"category" : "OntoUML-Profile-OntoUML-Profile",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"base_Association",
+		"essential",
+		"inseparable"
+	],
+	"name" : "OntoUMLMeronymic",
+	"type" : "normal"
+}

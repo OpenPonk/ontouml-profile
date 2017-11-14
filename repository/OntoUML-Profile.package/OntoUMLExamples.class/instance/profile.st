@@ -1,0 +1,3 @@
+accessing
+profile
+	^ OntoUMLProfileFactory profile

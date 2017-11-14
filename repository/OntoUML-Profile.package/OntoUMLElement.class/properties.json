@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "OPUMLElement",
+	"category" : "OntoUML-Profile",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "OntoUMLElement",
+	"type" : "normal"
+}

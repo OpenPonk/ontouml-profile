@@ -10,13 +10,13 @@ baseModel
 		name: 'wine';
 		lowerValue: (OPUMLLiteralInteger new value: 1);
 		upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
-		aggregation: OPUMLAggregationKind composite;
 		owningAssociation: subQuantity;
 		type: wine.
 	(alcoholProp := OPUMLProperty new)
 		name: 'alcohol';
 		lowerValue: (OPUMLLiteralInteger new value: 1);
 		upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
+		aggregation: OPUMLAggregationKind composite;
 		owningAssociation: subQuantity;
 		type: alcohol.
 	subQuantity

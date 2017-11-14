@@ -1,13 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "OPUMLElement",
-	"category" : "OntoUML-Profile-Metamodel",
+	"super" : "OntoUMLElement",
+	"category" : "OntoUML-Profile-OntoUML-Profile",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"base_Class"
-	],
+	"instvars" : [ ],
 	"name" : "OntoUMLKind",
 	"type" : "normal"
 }

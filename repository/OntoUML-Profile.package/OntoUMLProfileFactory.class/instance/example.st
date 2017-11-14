@@ -1,4 +1,4 @@
-actions
+example
 example
 	<gtExample>
 	| model profile quantityStereotype subQuantityOfStereotype |
@@ -15,12 +15,12 @@ example
 		detect: [ :each | each name = 'SubQuantityOf' ].
 	model packagedElements
 		select: [ :each | each oclIsKindOf: #Class ]
-		thenDo: [ :each | each applyStereotype: quantityStereotype implementationClass asClass new ].
+		thenDo: [ :each | each applyStereotype: quantityStereotype implementationClass new ].
 	model packagedElements
 		select: [ :each | each oclIsKindOf: #Association ]
 		thenDo: [ :each | 
 			| stereo |
-			stereo := subQuantityOfStereotype implementationClass asClass new.
+			stereo := subQuantityOfStereotype implementationClass new.
 			stereo essential: true.
 			each applyStereotype: stereo ].
 	^ model

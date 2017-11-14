@@ -1,11 +1,3 @@
-accessing
+accessing - Object
 base_Class: aClass
-	| oldClass |
-	oldClass := base_Class.
-	base_Class := aClass.
-	OPUMLToOneLink
-		on: self
-		thisSelector: #base_Class
-		otherSelector: #extension_Quantity
-		updateFrom: oldClass
-		to: aClass
+	(sharedGeneralizations at: #Object) base_Class: aClass
