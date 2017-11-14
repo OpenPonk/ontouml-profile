@@ -3,14 +3,14 @@ roleMixinPattern1Base
 	"https://ontouml.org/ufo/wiki/rolemixin/ Pattern 1"
 
 	<gtExample>
-	| model customer person company individualCustomer corporateCustomer |
+	| model customer person company individualCustomer corporateCustomer gs |
 	model := self emptyModel.
 	(customer := OPUMLClass new name: 'Customer') isAbstract: true.
 	person := OPUMLClass new name: 'Person'.
 	company := OPUMLClass new name: 'Company'.
 	individualCustomer := OPUMLClass new name: 'Individual Customer'.
 	corporateCustomer := OPUMLClass new name: 'Corporate Customer'.
-(	self
+	gs := (self
 		generalizationSetOn:
 			{self generalizationFrom: individualCustomer to: customer.
 			self generalizationFrom: corporateCustomer to: customer}) name: 'gs1'.
@@ -21,5 +21,6 @@ roleMixinPattern1Base
 		add: person;
 		add: company;
 		add: individualCustomer;
-		add: corporateCustomer.
+		add: corporateCustomer;
+		add: gs.
 	^ model
