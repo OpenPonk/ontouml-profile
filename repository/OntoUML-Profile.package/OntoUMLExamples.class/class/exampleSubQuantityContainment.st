@@ -1,4 +1,4 @@
 examples
 exampleSubQuantityContainment
 	<example: 'Containment, SubQuantityOf'>
-	^ OPProject openOnModel: self new subQuantityOfEx1
+	^ OPUmlProject openOnModel: self new subQuantityOfEx1

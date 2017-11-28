@@ -26,7 +26,7 @@ menuCommandOn: aBuilder
 				parent: parent;
 				label: 'Open OntoUML Profile';
 				icon: OPUmlIcons profileIcon;
-				action: [ OPProject openOnModel: OntoUMLProfileFactory profile ].
+				action: [ OPUmlProject openOnModel: OntoUMLProfileFactory profile ].
 			(aBuilder item: #OntoUMLProfileInspect)
 				parent: parent;
 				label: 'Inspect OntoUML Profile';

@@ -1,4 +1,4 @@
 scripts
 openEmptyModel
 	<script>
-	^ OPProject openOnModel: self new emptyModel
+	^ OPUmlProject openOnModel: self new emptyModel
