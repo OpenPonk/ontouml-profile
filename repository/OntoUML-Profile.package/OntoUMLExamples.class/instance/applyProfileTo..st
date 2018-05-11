@@ -3,5 +3,5 @@ applyProfileTo: aModel
 	aModel profileApplications
 		add:
 			(OPUMLProfileApplication new
-				uuid: aModel uuid , '-_profileApplication.0';
+				uuid: self profile uuid asString , '-_profileApplication.0';
 				appliedProfile: self profile)
