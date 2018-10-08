@@ -1,3 +1,0 @@
-actions
-createProfile
-	^ self profile
