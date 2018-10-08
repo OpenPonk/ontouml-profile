@@ -2,7 +2,9 @@
 	"commentStamp" : "",
 	"super" : "Object",
 	"category" : "OntoUML-Profile-Examples",
-	"classinstvars" : [ ],
+	"classinstvars" : [
+		"ontoumlIcon"
+	],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],

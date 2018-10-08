@@ -4,14 +4,14 @@ menuCommandOn: aBuilder
 	| parent |
 	parent := #UntoUMLStructuralEditor.
 	(aBuilder item: parent)
-		icon: OPIcons current openponkIcon;
+		icon: self ontoumlIcon;
 		label: 'OntoUML UFO-A Editor';
 		parent: #MostUsedTools;
 		action: [ self openEmptyModel ];
 		with: [ (aBuilder item: #OntoUMLEmptyOpen)
 				parent: parent;
 				label: 'Open Empty Model';
-				icon: OPUmlIcons modelIcon;
+				icon: self ontoumlIcon;
 				withSeparatorAfter;
 				action: [ self openEmptyModel ].
 			((self class methodsInProtocol: 'examples')
@@ -19,16 +19,16 @@ menuCommandOn: aBuilder
 					(aBuilder item: ('OntoUML' , each selector capitalized) asSymbol)
 						parent: parent;
 						label: each pragmas first arguments first;
-						icon: OPUmlIcons modelIcon;
+						icon: self ontoumlIcon;
 						target: self;
 						selector: each selector ]) last withSeparatorAfter.
 			(aBuilder item: #OntoUMLProfileOpen)
 				parent: parent;
 				label: 'Open OntoUML Profile';
-				icon: OPUmlIcons profileIcon;
+				icon: self ontoumlIcon;
 				action: [ OPUmlProject openOnModel: OntoUMLProfileFactory profile ].
 			(aBuilder item: #OntoUMLProfileInspect)
 				parent: parent;
 				label: 'Inspect OntoUML Profile';
-				icon: OPUmlIcons profileIcon;
+				icon: self ontoumlIcon;
 				action: [ OntoUMLProfileFactory profile inspect ] ]
