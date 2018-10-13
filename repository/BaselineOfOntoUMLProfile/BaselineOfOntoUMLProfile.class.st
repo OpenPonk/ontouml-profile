@@ -14,7 +14,7 @@ BaselineOfOntoUMLProfile >> baseline: spec [
 		for: #common
 		do: [ spec
 				baseline: 'UMLProfiles'
-				with: [ spec repository: 'github://openponk/uml-profiles/repository' ].
+				with: [ spec repository: 'github://openponk/uml-profiles:v1.x/repository' ].
 			spec package: 'OntoUML-Profile' with: [ spec requires: #('UMLProfiles') ].
 			spec group: 'default' with: #('OntoUML-Profile') ]
 ]
