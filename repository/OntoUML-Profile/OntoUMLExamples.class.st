@@ -59,7 +59,7 @@ OntoUMLExamples class >> menuCommandOn: aBuilder [
 OntoUMLExamples class >> ontoumlIcon [
 	^ ontoumlIcon
 		ifNil: [ ontoumlIcon := Form
-				fromBinaryStream: (Base64MimeConverter mimeDecodeToBytes: self ontoumlIconContents readStream) ]
+				fromBinaryStream: (self ontoumlIconContents base64Decoded readStream) ]
 ]
 
 { #category : #'accessing - icons' }
