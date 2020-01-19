@@ -23,12 +23,12 @@ OntoUMLExamples class >> exampleSubQuantityContainment [
 OntoUMLExamples class >> menuCommandOn: aBuilder [
 	<worldMenu>
 	| parent |
-	parent := #UntoUMLStructuralEditor.
+	parent := #OntoUML.
 	(aBuilder item: parent)
 		icon: self ontoumlIcon;
 		label: 'OntoUML UFO-A Editor';
-		parent: #MostUsedTools;
 		action: [ self openEmptyModel ];
+		order: 25.710;
 		with: [ (aBuilder item: #OntoUMLEmptyOpen)
 				parent: parent;
 				label: 'Open Empty Model';
