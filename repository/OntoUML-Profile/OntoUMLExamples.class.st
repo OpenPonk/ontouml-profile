@@ -10,13 +10,13 @@ Class {
 { #category : #examples }
 OntoUMLExamples class >> exampleRoleMixinPattern1 [
 	<example: 'Role Mixin'>
-	^ OPUmlProject openOnModel: self new roleMixinPattern1
+	^ OPProject openOnModel: self new roleMixinPattern1
 ]
 
 { #category : #examples }
 OntoUMLExamples class >> exampleSubQuantityContainment [
 	<example: 'Containment, SubQuantityOf'>
-	^ OPUmlProject openOnModel: self new subQuantityOfEx1
+	^ OPProject openOnModel: self new subQuantityOfEx1
 ]
 
 { #category : #'world menu' }
@@ -47,7 +47,7 @@ OntoUMLExamples class >> menuCommandOn: aBuilder [
 				parent: parent;
 				label: 'Open OntoUML Profile';
 				icon: self ontoumlIcon;
-				action: [ OPUmlProject openOnModel: OntoUMLProfileFactory profile ].
+				action: [ OPProject openOnModel: OntoUMLProfileFactory profile ].
 			(aBuilder item: #OntoUMLProfileInspect)
 				parent: parent;
 				label: 'Inspect OntoUML Profile';
@@ -83,7 +83,7 @@ YOd3O00GSqmWFmJ09Xa0UWehXvqZYKT1q5kKC2GZS8P88GcN5QbKGJiWXCCzIqONBLCyKls7
 { #category : #scripts }
 OntoUMLExamples class >> openEmptyModel [
 	<script>
-	^ OPUmlProject openOnModel: self new emptyModel
+	^ OPProject openOnModel: self new emptyModel
 ]
 
 { #category : #support }

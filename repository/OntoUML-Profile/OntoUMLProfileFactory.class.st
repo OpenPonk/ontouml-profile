@@ -1,7 +1,7 @@
 Class {
 	#name : #OntoUMLProfileFactory,
 	#superclass : #OPUmlCustomProfile,
-	#category : 'OntoUML-Profile-Model'
+	#category : #'OntoUML-Profile-Model'
 }
 
 { #category : #actions }
@@ -165,13 +165,13 @@ OntoUMLProfileFactory >> objectPair [
 { #category : #example }
 OntoUMLProfileFactory >> openExample [
 	<script: 'self new openExample'>
-	OPUmlProject openOnModel: self example
+	OPProject openOnModel: self example
 ]
 
 { #category : #actions }
 OntoUMLProfileFactory >> openProfile [
 	<script: 'self new openProfile'>
-	OPUmlProject openOnModel: self class profile
+	OPProject openOnModel: self class profile
 ]
 
 { #category : #accessing }
