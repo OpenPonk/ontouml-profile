@@ -38,7 +38,7 @@ OPUMLAssociation >> extension_Material: aMaterial [
 
 { #category : #'*OntoUML-Profile' }
 OPUMLAssociation >> extension_Meronymic [
-	^ self tagAt: #extension_Meronymic ifAbsent: [ nil ]
+		^ self tagAt: #extension_Meronymic ifAbsent: [ nil ]
 ]
 
 { #category : #'*OntoUML-Profile' }

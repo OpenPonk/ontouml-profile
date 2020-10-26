@@ -1,7 +1,10 @@
+"
+I am an abstract class for OntoUML implementing some behavior for managing the classes and other stuff.
+"
 Class {
 	#name : #OntoUMLElement,
-	#superclass : #OPUMLElement,
-	#category : 'OntoUML-Profile'
+	#superclass : #OPUMLMetaElement,
+	#category : #'OntoUML-Profile-OntoUML-Profile'
 }
 
 { #category : #accessing }

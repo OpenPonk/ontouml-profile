@@ -20,18 +20,18 @@ OPUMLClass >> extension_Moment: aMoment [
 
 { #category : #'*OntoUML-Profile' }
 OPUMLClass >> extension_Object [
-	^ self tagAt: #extension_Object ifAbsent: [ nil ]
+		^ self tagAt: #extension_Object ifAbsent: [ nil ]
 ]
 
 { #category : #'*OntoUML-Profile' }
-OPUMLClass >> extension_Object: anObject [
+OPUMLClass >> extension_Object: aObject [
 	| oldObject |
 	oldObject := self extension_Object.
-	self tagAt: #extension_Object put: anObject.
+	self tagAt: #extension_Object put: aObject.
 	OPUMLToOneLink
 		on: self
 		thisSelector: #extension_Object
 		otherSelector: #base_Class
 		updateFrom: oldObject
-		to: anObject
+		to: aObject
 ]
