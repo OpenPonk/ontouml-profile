@@ -13,8 +13,11 @@ BaselineOfOntoUMLProfile >> baseline: spec [
 	spec
 		for: #common
 		do: [ spec
-				baseline: 'UMLProfiles'
-				with: [ spec repository: 'github://openponk/uml-profiles/repository' ].
-			spec package: 'OntoUML-Profile' with: [ spec requires: #('UMLProfiles') ].
-			spec group: 'default' with: #('OntoUML-Profile') ]
+				baseline: 'ClassEditor'
+				with: [ spec repository: 'github://openponk/ontouml-profile/repository' ].
+			spec
+				package: 'OntoUML-Profile'
+				with: [ spec requires: #(ClassEditor) ].
+			spec group: 'plugin' with: #('OntoUML-Profile').
+			spec group: 'default' with: #(ClassEditor plugin) ]
 ]
