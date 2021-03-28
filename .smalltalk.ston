@@ -1,0 +1,15 @@
+SmalltalkCISpec {
+	#loading : [
+		SCIMetacelloLoadSpec {
+			#baseline : 'OntoUMLProfile',
+			#directory : 'repository',
+			#platforms : [ #pharo ]
+		}
+	],
+	#testing : {
+		#packages : [ 'OntoUML-Profile*' ],
+		#coverage : {
+			#packages : [ 'OntoUML-Profile*' ]
+		}
+	}
+}
