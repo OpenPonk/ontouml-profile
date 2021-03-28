@@ -8,6 +8,7 @@ SmalltalkCISpec {
 	],
 	#testing : {
 		#packages : [ 'OntoUML-Profile*' ],
+		#failOnZeroTests : false,
 		#coverage : {
 			#packages : [ 'OntoUML-Profile*' ]
 		}
