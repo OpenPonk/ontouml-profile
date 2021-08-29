@@ -37,11 +37,6 @@ YOd3O00GSqmWFmJ09Xa0UWehXvqZYKT1q5kKC2GZS8P88GcN5QbKGJiWXCCzIqONBLCyKls7
 +yKL+L3v8O8diRxmvd67OQhv75ph8geQ/iHLJlMN5gAAAABJRU5ErkJggg=='
 ]
 
-{ #category : #'as yet unclassified' }
-OntoUMLPlugin >> defaultProfiles [
-	^ {OntoUMLProfileFactory profile}
-]
-
 { #category : #accessing }
 OntoUMLPlugin >> icon [
 	^ self class ontoumlIcon

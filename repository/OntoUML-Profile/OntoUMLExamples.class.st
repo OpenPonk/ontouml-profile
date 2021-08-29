@@ -18,6 +18,7 @@ OntoUMLExamples class >> exampleSubQuantityContainment [
 
 { #category : #'world menu' }
 OntoUMLExamples class >> menuCommandOn: aBuilder [
+
 	<worldMenu>
 	| parent |
 	parent := #OntoUML.
@@ -25,21 +26,21 @@ OntoUMLExamples class >> menuCommandOn: aBuilder [
 		icon: OntoUMLPlugin ontoumlIcon;
 		label: 'OntoUML UFO-A Editor';
 		action: [ self openEmptyModel ];
-		order: 25.710;
-		with: [ (aBuilder item: #OntoUMLEmptyOpen)
+		order: 210;
+		with: [ 
+			(aBuilder item: #OntoUMLEmptyOpen)
 				parent: parent;
 				label: 'Open Empty Model';
 				icon: OntoUMLPlugin ontoumlIcon;
 				withSeparatorAfter;
 				action: [ self openEmptyModel ].
-			((self class methodsInProtocol: 'examples')
-				collect: [ :each | 
-					(aBuilder item: ('OntoUML' , each selector capitalized) asSymbol)
-						parent: parent;
-						label: each pragmas first arguments first;
-						icon: OntoUMLPlugin ontoumlIcon;
-						target: self;
-						selector: each selector ]) last withSeparatorAfter.
+			((self class methodsInProtocol: 'examples') collect: [ :each | 
+				 (aBuilder item: ('OntoUML' , each selector capitalized) asSymbol)
+					 parent: parent;
+					 label: each pragmas first arguments first;
+					 icon: OntoUMLPlugin ontoumlIcon;
+					 target: self;
+					 selector: each selector ]) last withSeparatorAfter.
 			(aBuilder item: #OntoUMLProfileOpen)
 				parent: parent;
 				label: 'Open OntoUML Profile';
