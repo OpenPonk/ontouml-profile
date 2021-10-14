@@ -103,11 +103,11 @@ OntoUMLProfileFactory >> generate [
 
 { #category : #parts }
 OntoUMLProfileFactory >> materialPair [
+
 	<gtExample>
-	| pair |
-	pair := self newStereotype: #Material to: (self metaClassNamed: 'Association').
-	pair first isAbstract: true.
-	^ pair
+	^ self
+		  newStereotype: #Material
+		  to: (self metaClassNamed: 'Association')
 ]
 
 { #category : #parts }
@@ -251,17 +251,17 @@ OntoUMLProfileFactory >> xmi [
             </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Extension" xmi:id="Association_Formal" memberEnd="Formal-base_Association Association_Formal-extension_Formal" name="Association_Formal">
-            <ownedEnd xmi:type="uml:Property" xmi:id="Association_Formal-extension_Formal" aggregation="composite" association="Association_Formal" type="Formal" name="extension_Formal">
+            <ownedEnd xmi:type="uml:Property" xmi:id="Association_Formal-extension_Formal" aggregation="composite" association="Association_Formal" name="extension_Formal" type="Formal">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Association_Formal-extension_Formal-_lowerValue"/>
             </ownedEnd>
         </packagedElement>
-        <packagedElement xmi:type="uml:Stereotype" xmi:id="Material" isAbstract="true" name="Material">
+        <packagedElement xmi:type="uml:Stereotype" xmi:id="Material" name="Material">
             <ownedAttribute xmi:type="uml:Property" xmi:id="Material-base_Association" association="Association_Material" name="base_Association">
                 <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20131001/UML.xmi#Association"/>
             </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Extension" xmi:id="Association_Material" memberEnd="Material-base_Association Association_Material-extension_Material" name="Association_Material">
-            <ownedEnd xmi:type="uml:Property" xmi:id="Association_Material-extension_Material" aggregation="composite" association="Association_Material" type="Material" name="extension_Material">
+            <ownedEnd xmi:type="uml:Property" xmi:id="Association_Material-extension_Material" aggregation="composite" association="Association_Material" name="extension_Material" type="Material">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Association_Material-extension_Material-_lowerValue"/>
             </ownedEnd>
         </packagedElement>
@@ -279,7 +279,7 @@ OntoUMLProfileFactory >> xmi [
             </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Extension" xmi:id="Association_Meronymic" memberEnd="Meronymic-base_Association Association_Meronymic-extension_Meronymic" name="Association_Meronymic">
-            <ownedEnd xmi:type="uml:Property" xmi:id="Association_Meronymic-extension_Meronymic" aggregation="composite" association="Association_Meronymic" type="Meronymic" name="extension_Meronymic">
+            <ownedEnd xmi:type="uml:Property" xmi:id="Association_Meronymic-extension_Meronymic" aggregation="composite" association="Association_Meronymic" name="extension_Meronymic" type="Meronymic">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Association_Meronymic-extension_Meronymic-_lowerValue"/>
             </ownedEnd>
         </packagedElement>
@@ -289,7 +289,7 @@ OntoUMLProfileFactory >> xmi [
             </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Extension" xmi:id="Class_Moment" memberEnd="Moment-base_Class Class_Moment-extension_Moment" name="Class_Moment">
-            <ownedEnd xmi:type="uml:Property" xmi:id="Class_Moment-extension_Moment" aggregation="composite" association="Class_Moment" type="Moment" name="extension_Moment">
+            <ownedEnd xmi:type="uml:Property" xmi:id="Class_Moment-extension_Moment" aggregation="composite" association="Class_Moment" name="extension_Moment" type="Moment">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class_Moment-extension_Moment-_lowerValue"/>
             </ownedEnd>
         </packagedElement>
@@ -299,7 +299,7 @@ OntoUMLProfileFactory >> xmi [
             </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Extension" xmi:id="Class_Object" memberEnd="Object-base_Class Class_Object-extension_Object" name="Class_Object">
-            <ownedEnd xmi:type="uml:Property" xmi:id="Class_Object-extension_Object" aggregation="composite" association="Class_Object" type="Object" name="extension_Object">
+            <ownedEnd xmi:type="uml:Property" xmi:id="Class_Object-extension_Object" aggregation="composite" association="Class_Object" name="extension_Object" type="Object">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class_Object-extension_Object-_lowerValue"/>
             </ownedEnd>
         </packagedElement>
