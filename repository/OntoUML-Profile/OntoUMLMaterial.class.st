@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'base_Association'
 	],
-	#category : 'OntoUML-Profile-OntoUML-Profile'
+	#category : #'OntoUML-Profile-model'
 }
 
 { #category : #accessing }

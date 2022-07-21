@@ -1,7 +1,7 @@
 Class {
 	#name : #OntoUMLBasicInternal,
 	#superclass : #OntoUMLElement,
-	#category : 'OntoUML-Profile-OntoUML-Profile'
+	#category : #'OntoUML-Profile-model'
 }
 
 { #category : #'accessing - Formal' }

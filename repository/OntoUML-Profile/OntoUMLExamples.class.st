@@ -1,7 +1,7 @@
 Class {
 	#name : #OntoUMLExamples,
 	#superclass : #Object,
-	#category : #'OntoUML-Profile-Examples'
+	#category : #'OntoUML-Profile-examples'
 }
 
 { #category : #examples }
@@ -14,43 +14,6 @@ OntoUMLExamples class >> exampleRoleMixinPattern1 [
 OntoUMLExamples class >> exampleSubQuantityContainment [
 	<example: 'Containment, SubQuantityOf'>
 	^ OPProject openOnModel: self new subQuantityOfEx1
-]
-
-{ #category : #'world menu' }
-OntoUMLExamples class >> menuCommandOn: aBuilder [
-
-	<worldMenu>
-	| parent |
-	parent := #OntoUML.
-	(aBuilder item: parent)
-		icon: OntoUMLPlugin ontoumlIcon;
-		label: 'OntoUML UFO-A Editor';
-		action: [ self openEmptyModel ];
-		order: 210;
-		with: [ 
-			(aBuilder item: #OntoUMLEmptyOpen)
-				parent: parent;
-				label: 'Open Empty Model';
-				icon: OntoUMLPlugin ontoumlIcon;
-				withSeparatorAfter;
-				action: [ self openEmptyModel ].
-			((self class methodsInProtocol: 'examples') collect: [ :each | 
-				 (aBuilder item: ('OntoUML' , each selector capitalized) asSymbol)
-					 parent: parent;
-					 label: each pragmas first arguments first;
-					 icon: OntoUMLPlugin ontoumlIcon;
-					 target: self;
-					 selector: each selector ]) last withSeparatorAfter.
-			(aBuilder item: #OntoUMLProfileOpen)
-				parent: parent;
-				label: 'Open OntoUML Profile';
-				icon: OntoUMLPlugin ontoumlIcon;
-				action: [ OPProject openOnModel: OntoUMLProfileFactory profile ].
-			(aBuilder item: #OntoUMLProfileInspect)
-				parent: parent;
-				label: 'Inspect OntoUML Profile';
-				icon: OntoUMLPlugin ontoumlIcon;
-				action: [ OntoUMLProfileFactory profile inspect ] ]
 ]
 
 { #category : #scripts }

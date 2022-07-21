@@ -1,7 +1,7 @@
 Class {
 	#name : #OntoUMLSubKind,
 	#superclass : #OntoUMLElement,
-	#category : 'OntoUML-Profile-OntoUML-Profile'
+	#category : #'OntoUML-Profile-model'
 }
 
 { #category : #'accessing - Object' }

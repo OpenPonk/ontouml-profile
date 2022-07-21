@@ -4,7 +4,7 @@ I am an abstract class for OntoUML implementing some behavior for managing the c
 Class {
 	#name : #OntoUMLElement,
 	#superclass : #OPUMLMetaElement,
-	#category : #'OntoUML-Profile-OntoUML-Profile'
+	#category : #'OntoUML-Profile-model'
 }
 
 { #category : #accessing }

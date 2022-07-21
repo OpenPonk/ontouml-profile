@@ -7,40 +7,8 @@ Class {
 	#instVars : [
 		'profile'
 	],
-	#category : #'OntoUML-Profile-Model'
+	#category : #'OntoUML-Profile-model'
 }
-
-{ #category : #actions }
-OntoUMLProfileFactory >> baseModel [
-	<gtExample>
-	| model wine alcohol subQuantity wineProp alcoholProp |
-	model := OPUmlExamples new emptyModel.
-	wine := OPUMLClass new name: 'Wine'.
-	alcohol := OPUMLClass new name: 'Alcohol'.
-	subQuantity := OPUMLAssociation new.
-	(wineProp := OPUMLProperty new)
-		name: 'wine';
-		lowerValue: (OPUMLLiteralInteger new value: 1);
-		upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
-		owningAssociation: subQuantity;
-		type: wine.
-	(alcoholProp := OPUMLProperty new)
-		name: 'alcohol';
-		lowerValue: (OPUMLLiteralInteger new value: 1);
-		upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
-		aggregation: OPUMLAggregationKind composite;
-		owningAssociation: subQuantity;
-		type: alcohol.
-	subQuantity
-		memberEnds:
-			{wineProp.
-			alcoholProp} asOrderedCollection.
-	model packagedElements
-		add: wine;
-		add: alcohol;
-		add: subQuantity.
-	^ model
-]
 
 { #category : #accessing }
 OntoUMLProfileFactory >> createProfile [
@@ -50,34 +18,6 @@ OntoUMLProfileFactory >> createProfile [
 		implementationPrefix: 'OntoUML'.	
 	profile ownedStereotype do: [ :each | each profile: profile ].
 	^ profile
-]
-
-{ #category : #example }
-OntoUMLProfileFactory >> example [
-	<gtExample>
-	| model profile quantityStereotype subQuantityOfStereotype |
-	model := self baseModel.
-	profile := self class profile.
-	model profileApplications
-		add:
-			(OPUMLProfileApplication new
-				uuid: model uuid , '-_profileApplication.0';
-				appliedProfile: profile).
-	quantityStereotype := profile packagedElements
-		detect: [ :each | each name = 'Quantity' ].
-	subQuantityOfStereotype := profile packagedElements
-		detect: [ :each | each name = 'SubQuantityOf' ].
-	model packagedElements
-		select: [ :each | each oclIsKindOf: #Class ]
-		thenDo: [ :each | each applyStereotype: quantityStereotype implementationClass new ].
-	model packagedElements
-		select: [ :each | each oclIsKindOf: #Association ]
-		thenDo: [ :each | 
-			| stereo |
-			stereo := subQuantityOfStereotype implementationClass new.
-			stereo essential: true.
-			each applyStereotype: stereo ].
-	^ model
 ]
 
 { #category : #parts }

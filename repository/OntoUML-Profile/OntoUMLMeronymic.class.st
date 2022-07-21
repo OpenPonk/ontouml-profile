@@ -6,7 +6,7 @@ Class {
 		'essential',
 		'inseparable'
 	],
-	#category : 'OntoUML-Profile-OntoUML-Profile'
+	#category : #'OntoUML-Profile-model'
 }
 
 { #category : #accessing }
