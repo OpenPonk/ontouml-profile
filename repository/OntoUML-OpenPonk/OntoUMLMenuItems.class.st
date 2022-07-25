@@ -39,5 +39,6 @@ OntoUMLMenuItems class >> menuCommandOn: aBuilder [
 				parent: parent;
 				label: 'Inspect OntoUML Profile';
 				icon: OntoUMLIcons ontoumlIcon;
+				withSeparatorAfter;
 				action: [ OntoUMLProfileFactory profile inspect ] ]
 ]

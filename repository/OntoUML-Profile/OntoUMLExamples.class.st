@@ -44,12 +44,17 @@ OntoUMLExamples >> aggregatedFrom: leftSide to: rightSide [
 ]
 
 { #category : #support }
+OntoUMLExamples >> applyProfile: aProfile to: aModel [
+
+	aModel profileApplications add: (OPUMLProfileApplication new
+			 uuid: aProfile uuid asString , '-_profileApplication.0';
+			 appliedProfile: aProfile)
+]
+
+{ #category : #support }
 OntoUMLExamples >> applyProfileTo: aModel [
-	aModel profileApplications
-		add:
-			(OPUMLProfileApplication new
-				uuid: self profile uuid asString , '-_profileApplication.0';
-				appliedProfile: self profile)
+
+	self applyProfile: self profile to: aModel
 ]
 
 { #category : #support }
@@ -92,10 +97,16 @@ OntoUMLExamples >> associationFrom: leftSide to: rightSide [
 ]
 
 { #category : #examples }
+OntoUMLExamples >> defaultModelName [
+
+	^ 'OntoUML Model'
+]
+
+{ #category : #examples }
 OntoUMLExamples >> emptyModel [
-	<gtExample>
+
 	| model |
-	model := OPUMLPackage new name: 'OntoUML Model'.
+	model := OPUMLPackage new name: self defaultModelName.
 	self applyProfileTo: model.
 	^ model
 ]
@@ -117,6 +128,7 @@ OntoUMLExamples >> generalizationSetOn: aCollection [
 
 { #category : #accessing }
 OntoUMLExamples >> profile [
+
 	^ OntoUMLProfileFactory profile
 ]
 
