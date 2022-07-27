@@ -46,9 +46,8 @@ OntoUMLExamples >> aggregatedFrom: leftSide to: rightSide [
 { #category : #support }
 OntoUMLExamples >> applyProfile: aProfile to: aModel [
 
-	aModel profileApplications add: (OPUMLProfileApplication new
-			 uuid: aProfile uuid asString , '-_profileApplication.0';
-			 appliedProfile: aProfile)
+	aModel profileApplications add:
+		(OPUMLProfileApplication new appliedProfile: aProfile)
 ]
 
 { #category : #support }
