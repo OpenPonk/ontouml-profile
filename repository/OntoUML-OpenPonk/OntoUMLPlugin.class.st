@@ -18,9 +18,7 @@ OntoUMLPlugin >> icon [
 { #category : #accessing }
 OntoUMLPlugin >> isPluginFor: aModel [
 
-	^ ({ 
-		   self modelClass.
-		   OPUMLModel } includes: aModel class) and: [ 
+	^ ({ self modelClass } includes: aModel class) and: [ 
 		  self supportsProfilesOf: aModel ]
 ]
 
