@@ -113,16 +113,12 @@ OntoUMLProfileFactory >> objectPair [
 	^ pair
 ]
 
-{ #category : #example }
-OntoUMLProfileFactory >> openExample [
-	<script: 'self new openExample'>
-	OPProject openOnModel: self example
-]
-
 { #category : #actions }
 OntoUMLProfileFactory >> openProfile [
+
 	<script: 'self new openProfile'>
-	OPProject openOnModel: self class profile
+	(OPProject openOnModel: self class profile)
+		showAllElementsInAllDiagrams
 ]
 
 { #category : #accessing }

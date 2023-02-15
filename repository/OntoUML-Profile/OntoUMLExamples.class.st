@@ -6,14 +6,18 @@ Class {
 
 { #category : #examples }
 OntoUMLExamples class >> exampleRoleMixinPattern1 [
+
 	<example: 'Role Mixin'>
-	^ OPProject openOnModel: self new roleMixinPattern1
+	^ (OPProject openOnModel: self new roleMixinPattern1)
+		  showAllElementsInAllDiagrams
 ]
 
 { #category : #examples }
 OntoUMLExamples class >> exampleSubQuantityContainment [
+
 	<example: 'Containment, SubQuantityOf'>
-	^ OPProject openOnModel: self new subQuantityOfEx1
+	^ (OPProject openOnModel: self new subQuantityOfEx1)
+		  showAllElementsInAllDiagrams
 ]
 
 { #category : #scripts }
