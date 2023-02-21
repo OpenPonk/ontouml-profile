@@ -10,6 +10,26 @@ Class {
 	#category : #'OntoUML-Profile-model'
 }
 
+{ #category : #actions }
+OntoUMLProfileFactory class >> generate [
+
+	<script>
+	| model generator |
+	model := self profile.
+	generator := OPUMLProfileGenerator new.
+	generator sourceModel: model.
+	generator classPrefix: model implementationPrefix.
+	generator packageName: model implementationPackage.
+	(CBChangesBrowser changes: generator generateAll) open
+]
+
+{ #category : #actions }
+OntoUMLProfileFactory class >> openProfile [
+
+	<script>
+	self new openProfile
+]
+
 { #category : #accessing }
 OntoUMLProfileFactory >> createProfile [
 	profile ifNotNil: [ ^ profile ].
@@ -27,18 +47,6 @@ OntoUMLProfileFactory >> formalPair [
 	pair := self newStereotype: #Formal to: (self metaClassNamed: 'Association').
 	pair first isAbstract: true.
 	^ pair
-]
-
-{ #category : #actions }
-OntoUMLProfileFactory >> generate [
-	<script: 'self new generate'>
-	| model generator |
-	model := self class profile.
-	generator := OPUMLProfileGenerator new.
-	generator sourceModel: model.
-	generator classPrefix: model implementationPrefix.
-	generator packageName: model implementationPackage.
-	(CBChangesBrowser changes: generator generateAll) open
 ]
 
 { #category : #parts }
@@ -116,9 +124,7 @@ OntoUMLProfileFactory >> objectPair [
 { #category : #actions }
 OntoUMLProfileFactory >> openProfile [
 
-	<script: 'self new openProfile'>
-	(OPProject openOnModel: self class profile)
-		showAllElementsInAllDiagrams
+	(OPProject openOnModel: self profile) showAllElementsInAllDiagrams
 ]
 
 { #category : #accessing }
@@ -167,12 +173,6 @@ OntoUMLProfileFactory >> profilePackage [
 		implementationPackage: 'OntoUML-Profile';
 		implementationPrefix: 'OntoUML';
 		yourself
-]
-
-{ #category : #actions }
-OntoUMLProfileFactory >> reset [
-	<script: 'self reset'>
-	self class reset
 ]
 
 { #category : #accessing }
