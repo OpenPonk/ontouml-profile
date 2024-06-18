@@ -1,11 +1,11 @@
-Extension { #name : #OPUMLClass }
+Extension { #name : 'OPUMLClass' }
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLClass >> extension_Moment [
 	^ self tagAt: #extension_Moment ifAbsent: [ nil ]
 ]
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLClass >> extension_Moment: aMoment [
 	| oldMoment |
 	oldMoment := self extension_Moment.
@@ -18,12 +18,12 @@ OPUMLClass >> extension_Moment: aMoment [
 		to: aMoment
 ]
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLClass >> extension_Object [
 		^ self tagAt: #extension_Object ifAbsent: [ nil ]
 ]
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLClass >> extension_Object: aObject [
 	| oldObject |
 	oldObject := self extension_Object.

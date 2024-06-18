@@ -1,27 +1,29 @@
 Class {
-	#name : #OntoUMLContainment,
-	#superclass : #OntoUMLElement,
-	#category : #'OntoUML-Profile-model'
+	#name : 'OntoUMLContainment',
+	#superclass : 'OntoUMLElement',
+	#category : 'OntoUML-Profile-model',
+	#package : 'OntoUML-Profile',
+	#tag : 'model'
 }
 
-{ #category : #'accessing - Formal' }
+{ #category : 'accessing - Formal' }
 OntoUMLContainment >> base_Association [
 	^ (sharedGeneralizations at: #Formal) base_Association
 ]
 
-{ #category : #'accessing - Formal' }
+{ #category : 'accessing - Formal' }
 OntoUMLContainment >> base_Association: anAssociation [
 	(sharedGeneralizations at: #Formal) base_Association: anAssociation
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLContainment >> initializeDirectGeneralizations [
 	directGeneralizations := {
 		sharedGeneralizations at: #BasicInternal.
 	}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLContainment >> initializeSharedGeneralizations [
 	sharedGeneralizations at: #Formal put: (OntoUMLFormal newOnShared: sharedGeneralizations).
 	sharedGeneralizations at: #BasicInternal put: (OntoUMLBasicInternal newOnShared: sharedGeneralizations).

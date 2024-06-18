@@ -1,27 +1,29 @@
 Class {
-	#name : #OntoUMLNonRigidMixin,
-	#superclass : #OntoUMLElement,
-	#category : #'OntoUML-Profile-model'
+	#name : 'OntoUMLNonRigidMixin',
+	#superclass : 'OntoUMLElement',
+	#category : 'OntoUML-Profile-model',
+	#package : 'OntoUML-Profile',
+	#tag : 'model'
 }
 
-{ #category : #'accessing - Object' }
+{ #category : 'accessing - Object' }
 OntoUMLNonRigidMixin >> base_Class [
 	^ (sharedGeneralizations at: #Object) base_Class
 ]
 
-{ #category : #'accessing - Object' }
+{ #category : 'accessing - Object' }
 OntoUMLNonRigidMixin >> base_Class: aClass [
 	(sharedGeneralizations at: #Object) base_Class: aClass
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLNonRigidMixin >> initializeDirectGeneralizations [
 	directGeneralizations := {
 		sharedGeneralizations at: #MixinClass.
 	}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLNonRigidMixin >> initializeSharedGeneralizations [
 	sharedGeneralizations at: #Object put: (OntoUMLObject newOnShared: sharedGeneralizations).
 	sharedGeneralizations at: #MixinClass put: (OntoUMLMixinClass newOnShared: sharedGeneralizations).

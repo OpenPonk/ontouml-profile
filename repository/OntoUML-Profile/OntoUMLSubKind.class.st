@@ -1,27 +1,29 @@
 Class {
-	#name : #OntoUMLSubKind,
-	#superclass : #OntoUMLElement,
-	#category : #'OntoUML-Profile-model'
+	#name : 'OntoUMLSubKind',
+	#superclass : 'OntoUMLElement',
+	#category : 'OntoUML-Profile-model',
+	#package : 'OntoUML-Profile',
+	#tag : 'model'
 }
 
-{ #category : #'accessing - Object' }
+{ #category : 'accessing - Object' }
 OntoUMLSubKind >> base_Class [
 	^ (sharedGeneralizations at: #Object) base_Class
 ]
 
-{ #category : #'accessing - Object' }
+{ #category : 'accessing - Object' }
 OntoUMLSubKind >> base_Class: aClass [
 	(sharedGeneralizations at: #Object) base_Class: aClass
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLSubKind >> initializeDirectGeneralizations [
 	directGeneralizations := {
 		sharedGeneralizations at: #RigidSortal.
 	}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLSubKind >> initializeSharedGeneralizations [
 	sharedGeneralizations at: #Object put: (OntoUMLObject newOnShared: sharedGeneralizations).
 	sharedGeneralizations at: #Sortal put: (OntoUMLSortal newOnShared: sharedGeneralizations).

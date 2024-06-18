@@ -1,16 +1,18 @@
 Class {
-	#name : #OntoUMLIcons,
-	#superclass : #OPUmlIcons,
-	#category : #'OntoUML-OpenPonk-icons'
+	#name : 'OntoUMLIcons',
+	#superclass : 'OPUmlIcons',
+	#category : 'OntoUML-OpenPonk-icons',
+	#package : 'OntoUML-OpenPonk',
+	#tag : 'icons'
 }
 
-{ #category : #'accessing - icons' }
+{ #category : 'accessing - icons' }
 OntoUMLIcons class >> ontoumlIcon [
 
 	^ Form fromBinaryStream: self ontoumlIconContents base64Decoded asByteArray readStream
 ]
 
-{ #category : #'private - contents' }
+{ #category : 'private - contents' }
 OntoUMLIcons class >> ontoumlIconContents [
 	^ 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABWVBMVEVHcEwtQojvaSgqQYoq
 QYrvaSjvaSgqQYoqQYrvaSgqQYrvaSgqQYrtaSn3ayTuaSj2aiTvaSjtaSnuaSi0XUXvaSgg

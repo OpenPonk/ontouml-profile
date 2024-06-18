@@ -1,19 +1,21 @@
 Class {
-	#name : #OntoUMLMoment,
-	#superclass : #OntoUMLElement,
+	#name : 'OntoUMLMoment',
+	#superclass : 'OntoUMLElement',
 	#instVars : [
 		'base_Class'
 	],
-	#category : #'OntoUML-Profile-model'
+	#category : 'OntoUML-Profile-model',
+	#package : 'OntoUML-Profile',
+	#tag : 'model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLMoment >> base_Class [
 	""
 	^ base_Class
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLMoment >> base_Class: aClass [
 	""
 	|anOldBase_Class|
@@ -27,13 +29,13 @@ OntoUMLMoment >> base_Class: aClass [
 		to: base_Class
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLMoment >> initializeDirectGeneralizations [
 	directGeneralizations := {
 	}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLMoment >> initializeSharedGeneralizations [
 	sharedGeneralizations at: #Moment put: self.
 ]

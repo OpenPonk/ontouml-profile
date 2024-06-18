@@ -1,11 +1,11 @@
-Extension { #name : #OPUMLAssociation }
+Extension { #name : 'OPUMLAssociation' }
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLAssociation >> extension_Formal [
 	^ self tagAt: #extension_Formal ifAbsent: [ nil ]
 ]
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLAssociation >> extension_Formal: aFormal [
 	| oldFormal |
 	oldFormal := self extension_Formal.
@@ -18,12 +18,12 @@ OPUMLAssociation >> extension_Formal: aFormal [
 		to: aFormal
 ]
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLAssociation >> extension_Material [
 	^ self tagAt: #extension_Material ifAbsent: [ nil ]
 ]
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLAssociation >> extension_Material: aMaterial [
 	| oldMaterial |
 	oldMaterial := self extension_Material.
@@ -36,12 +36,12 @@ OPUMLAssociation >> extension_Material: aMaterial [
 		to: aMaterial
 ]
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLAssociation >> extension_Meronymic [
 		^ self tagAt: #extension_Meronymic ifAbsent: [ nil ]
 ]
 
-{ #category : #'*OntoUML-Profile' }
+{ #category : '*OntoUML-Profile' }
 OPUMLAssociation >> extension_Meronymic: aMeronymic [
 	| oldMeronymic |
 	oldMeronymic := self extension_Meronymic.

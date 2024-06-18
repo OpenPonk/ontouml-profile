@@ -1,27 +1,29 @@
 Class {
-	#name : #OntoUMLMode,
-	#superclass : #OntoUMLElement,
-	#category : #'OntoUML-Profile-model'
+	#name : 'OntoUMLMode',
+	#superclass : 'OntoUMLElement',
+	#category : 'OntoUML-Profile-model',
+	#package : 'OntoUML-Profile',
+	#tag : 'model'
 }
 
-{ #category : #'accessing - Moment' }
+{ #category : 'accessing - Moment' }
 OntoUMLMode >> base_Class [
 	^ (sharedGeneralizations at: #Moment) base_Class
 ]
 
-{ #category : #'accessing - Moment' }
+{ #category : 'accessing - Moment' }
 OntoUMLMode >> base_Class: aClass [
 	(sharedGeneralizations at: #Moment) base_Class: aClass
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLMode >> initializeDirectGeneralizations [
 	directGeneralizations := {
 		sharedGeneralizations at: #IntrinsicMoment.
 	}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLMode >> initializeSharedGeneralizations [
 	sharedGeneralizations at: #Moment put: (OntoUMLMoment newOnShared: sharedGeneralizations).
 	sharedGeneralizations at: #IntrinsicMoment put: (OntoUMLIntrinsicMoment newOnShared: sharedGeneralizations).

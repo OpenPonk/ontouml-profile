@@ -1,10 +1,12 @@
 Class {
-	#name : #OntoUMLExamples,
-	#superclass : #Object,
-	#category : #'OntoUML-Profile-examples'
+	#name : 'OntoUMLExamples',
+	#superclass : 'Object',
+	#category : 'OntoUML-Profile-examples',
+	#package : 'OntoUML-Profile',
+	#tag : 'examples'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 OntoUMLExamples class >> exampleRoleMixinPattern1 [
 
 	<example: 'Role Mixin'>
@@ -12,7 +14,7 @@ OntoUMLExamples class >> exampleRoleMixinPattern1 [
 		  showAllElementsInAllDiagrams
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OntoUMLExamples class >> exampleSubQuantityContainment [
 
 	<example: 'Containment, SubQuantityOf'>
@@ -20,13 +22,13 @@ OntoUMLExamples class >> exampleSubQuantityContainment [
 		  showAllElementsInAllDiagrams
 ]
 
-{ #category : #scripts }
+{ #category : 'scripts' }
 OntoUMLExamples class >> openEmptyModel [
 	<script>
 	^ OPProject openOnModel: self new emptyModel
 ]
 
-{ #category : #support }
+{ #category : 'support' }
 OntoUMLExamples >> aggregatedFrom: leftSide to: rightSide [
 	| association leftProp rightProp |
 	association := OPUMLAssociation new.
@@ -47,20 +49,20 @@ OntoUMLExamples >> aggregatedFrom: leftSide to: rightSide [
 	^ association
 ]
 
-{ #category : #support }
+{ #category : 'support' }
 OntoUMLExamples >> applyProfile: aProfile to: aModel [
 
 	aModel profileApplications add:
 		(OPUMLProfileApplication new appliedProfile: aProfile)
 ]
 
-{ #category : #support }
+{ #category : 'support' }
 OntoUMLExamples >> applyProfileTo: aModel [
 
 	self applyProfile: self profile to: aModel
 ]
 
-{ #category : #support }
+{ #category : 'support' }
 OntoUMLExamples >> applyStereotypeNamed: aStereotypeName toName: aPackagedElementName in: aModel [
 	| packagedElement stereotype |
 	packagedElement := aModel packagedElements detect: [ :each | each name = aPackagedElementName ].
@@ -68,7 +70,7 @@ OntoUMLExamples >> applyStereotypeNamed: aStereotypeName toName: aPackagedElemen
 	packagedElement applyStereotype: stereotype implementationClass new
 ]
 
-{ #category : #support }
+{ #category : 'support' }
 OntoUMLExamples >> applyStereotypeNamed: aStereotypeName toNamePair: aNamePair in: aModel [
 	| packagedElement stereotype |
 	packagedElement := aModel packagedElements
@@ -79,7 +81,7 @@ OntoUMLExamples >> applyStereotypeNamed: aStereotypeName toNamePair: aNamePair i
 	packagedElement applyStereotype: stereotype implementationClass new
 ]
 
-{ #category : #support }
+{ #category : 'support' }
 OntoUMLExamples >> associationFrom: leftSide to: rightSide [
 	| association leftProp rightProp |
 	association := OPUMLAssociation new.
@@ -99,13 +101,13 @@ OntoUMLExamples >> associationFrom: leftSide to: rightSide [
 	^ association
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OntoUMLExamples >> defaultModelName [
 
 	^ 'OntoUML Model'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OntoUMLExamples >> emptyModel [
 
 	| model |
@@ -114,14 +116,14 @@ OntoUMLExamples >> emptyModel [
 	^ model
 ]
 
-{ #category : #support }
+{ #category : 'support' }
 OntoUMLExamples >> generalizationFrom: aSpecific to: aGeneral [
 	^ OPUMLGeneralization new
 		general: aGeneral;
 		specific: aSpecific
 ]
 
-{ #category : #support }
+{ #category : 'support' }
 OntoUMLExamples >> generalizationSetOn: aCollection [
 	| generalizationSet |
 	generalizationSet := OPUMLGeneralizationSet new.
@@ -129,13 +131,13 @@ OntoUMLExamples >> generalizationSetOn: aCollection [
 	^ generalizationSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLExamples >> profile [
 
 	^ OntoUMLProfileFactory profile
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OntoUMLExamples >> roleMixinPattern1 [
 	"https://ontouml.org/ufo/wiki/rolemixin/ Pattern 1"
 
@@ -150,7 +152,7 @@ OntoUMLExamples >> roleMixinPattern1 [
 	^ model
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OntoUMLExamples >> roleMixinPattern1Base [
 	"https://ontouml.org/ufo/wiki/rolemixin/ Pattern 1"
 
@@ -178,7 +180,7 @@ OntoUMLExamples >> roleMixinPattern1Base [
 	^ model
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OntoUMLExamples >> subQuantityOfEx1 [
 	<gtExample>
 	| model |
@@ -191,7 +193,7 @@ OntoUMLExamples >> subQuantityOfEx1 [
 	^ model
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 OntoUMLExamples >> subQuantityOfEx1Base [
 	<gtExample>
 	| model barrel beer alcohol containment subQuantity |

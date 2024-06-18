@@ -1,10 +1,12 @@
 Class {
-	#name : #OntoUMLMenuItems,
-	#superclass : #Object,
-	#category : #'OntoUML-OpenPonk-menu'
+	#name : 'OntoUMLMenuItems',
+	#superclass : 'Object',
+	#category : 'OntoUML-OpenPonk-menu',
+	#package : 'OntoUML-OpenPonk',
+	#tag : 'menu'
 }
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 OntoUMLMenuItems class >> menuCommandOn: aBuilder [
 
 	<worldMenu>

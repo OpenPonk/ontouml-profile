@@ -2,15 +2,17 @@
 I am a class representing the OntoUML profile itself.
 "
 Class {
-	#name : #OntoUMLProfileFactory,
-	#superclass : #OPUmlCustomProfile,
+	#name : 'OntoUMLProfileFactory',
+	#superclass : 'OPUmlCustomProfile',
 	#instVars : [
 		'profile'
 	],
-	#category : #'OntoUML-Profile-model'
+	#category : 'OntoUML-Profile-model',
+	#package : 'OntoUML-Profile',
+	#tag : 'model'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 OntoUMLProfileFactory class >> generate [
 
 	<script>
@@ -23,14 +25,14 @@ OntoUMLProfileFactory class >> generate [
 	(CBChangesBrowser changes: generator generateAll) open
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 OntoUMLProfileFactory class >> openProfile [
 
 	<script>
 	self new openProfile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLProfileFactory >> createProfile [
 	profile ifNotNil: [ ^ profile ].
 	profile := OPUMLXMIReader readFrom: self xmi readStream.
@@ -40,7 +42,7 @@ OntoUMLProfileFactory >> createProfile [
 	^ profile
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> formalPair [
 	<gtExample>
 	| pair |
@@ -49,7 +51,7 @@ OntoUMLProfileFactory >> formalPair [
 	^ pair
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> materialPair [
 
 	<gtExample>
@@ -58,7 +60,7 @@ OntoUMLProfileFactory >> materialPair [
 		  to: (self metaClassNamed: 'Association')
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> meronymicPair [
 	<gtExample>
 	| pair stereotype |
@@ -87,7 +89,7 @@ OntoUMLProfileFactory >> meronymicPair [
 	^ pair
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> momentPair [
 	<gtExample>
 	| classMetaclass pair stereotype |
@@ -98,7 +100,7 @@ OntoUMLProfileFactory >> momentPair [
 	^ pair
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> newStereotype: aName subclassOf: aParent [
 	| stereotype |
 	stereotype := OPUMLStereotype new
@@ -110,7 +112,7 @@ OntoUMLProfileFactory >> newStereotype: aName subclassOf: aParent [
 	^ stereotype
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> objectPair [
 	<gtExample>
 	| classMetaclass pair stereotype |
@@ -121,13 +123,13 @@ OntoUMLProfileFactory >> objectPair [
 	^ pair
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 OntoUMLProfileFactory >> openProfile [
 
 	(OPProject openOnModel: self profile) showAllElementsInAllDiagrams
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLProfileFactory >> profile [
 	<gtExample>
 	| profile hierarchy |
@@ -163,7 +165,7 @@ OntoUMLProfileFactory >> profile [
 	^ profile
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> profilePackage [
 	<gtExample>
 	^ OPUMLProfile new
@@ -175,7 +177,7 @@ OntoUMLProfileFactory >> profilePackage [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLProfileFactory >> xmi [
 	^ 
 '<?xml version="1.0" encoding="UTF-8"?>
