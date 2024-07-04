@@ -33,6 +33,20 @@ OntoUMLProfileFactory class >> openProfile [
 ]
 
 { #category : 'accessing' }
+OntoUMLProfileFactory class >> profile [
+
+	<script: 'self profile inspect'>
+	^ super profile
+]
+
+{ #category : 'accessing' }
+OntoUMLProfileFactory class >> reset [
+
+	<script>
+	super reset
+]
+
+{ #category : 'accessing' }
 OntoUMLProfileFactory >> createProfile [
 	profile ifNotNil: [ ^ profile ].
 	profile := OPUMLXMIReader readFrom: self xmi readStream.
