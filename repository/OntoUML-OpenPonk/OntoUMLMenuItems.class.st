@@ -15,23 +15,24 @@ OntoUMLMenuItems class >> menuCommandOn: aBuilder [
 	(aBuilder item: parent)
 		icon: OntoUMLIcons ontoumlIcon;
 		label: 'OntoUML UFO-A Editor';
-		action: [ OntoUMLExamples openEmptyModel ];
+		action: [ OntoUMLExamples openExampleEmptyModel ];
 		order: 210;
-		with: [ 
+		with: [
 			(aBuilder item: #OntoUMLEmptyOpen)
 				parent: parent;
 				label: 'Open Empty Model';
 				icon: OntoUMLIcons ontoumlIcon;
 				withSeparatorAfter;
-				action: [ OntoUMLExamples openEmptyModel ].
-			((OntoUMLExamples class methodsInProtocol: 'examples') collect: [ 
-				 :each | 
-				 (aBuilder item: ('OntoUML' , each selector capitalized) asSymbol)
-					 parent: parent;
-					 label: each pragmas first arguments first;
-					 icon: OntoUMLIcons ontoumlIcon;
-					 target: OntoUMLExamples;
-					 selector: each selector ]) last withSeparatorAfter.
+				action: [ OntoUMLExamples openExampleEmptyModel ].
+			(aBuilder item: 'Role Mixin')
+				parent: parent;
+				icon: OntoUMLIcons ontoumlIcon;
+				action: [ OntoUMLExamples openExampleRoleMixinPattern1 ].
+			(aBuilder item: 'Containment, SubQuantityOf')
+				parent: parent;
+				icon: OntoUMLIcons ontoumlIcon;
+				action: [ OntoUMLExamples openExampleSubQuantityContainment ];
+				withSeparatorAfter.
 			(aBuilder item: #OntoUMLProfileOpen)
 				parent: parent;
 				label: 'Open OntoUML Profile';

@@ -1,9 +1,9 @@
 Class {
 	#name : 'OntoUMLSubCollectionOf',
 	#superclass : 'OntoUMLElement',
-	#category : 'OntoUML-Profile-model',
+	#category : 'OntoUML-Profile-Model',
 	#package : 'OntoUML-Profile',
-	#tag : 'model'
+	#tag : 'Model'
 }
 
 { #category : 'accessing - Meronymic' }

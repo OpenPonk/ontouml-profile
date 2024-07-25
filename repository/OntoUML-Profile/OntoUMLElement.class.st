@@ -4,9 +4,9 @@ I am an abstract class for OntoUML implementing some behavior for managing the c
 Class {
 	#name : 'OntoUMLElement',
 	#superclass : 'OPUMLMetaElement',
-	#category : 'OntoUML-Profile-model',
+	#category : 'OntoUML-Profile-Model',
 	#package : 'OntoUML-Profile',
-	#tag : 'model'
+	#tag : 'Model'
 }
 
 { #category : 'accessing' }

@@ -1,31 +1,60 @@
 Class {
 	#name : 'OntoUMLExamples',
 	#superclass : 'Object',
-	#category : 'OntoUML-Profile-examples',
+	#category : 'OntoUML-Profile-Examples',
 	#package : 'OntoUML-Profile',
-	#tag : 'examples'
+	#tag : 'Examples'
 }
 
-{ #category : 'examples' }
-OntoUMLExamples class >> exampleRoleMixinPattern1 [
+{ #category : 'models' }
+OntoUMLExamples class >> emptyModel [
 
-	<example: 'Role Mixin'>
-	^ (OPProject openOnModel: self new roleMixinPattern1)
-		  showAllElementsInAllDiagrams
+	<script: 'self emptyModel inspect'>
+	^ self new emptyModel
 ]
 
-{ #category : 'examples' }
+{ #category : 'models' }
+OntoUMLExamples class >> exampleRoleMixinPattern1 [
+
+	<script: 'self exampleRoleMixinPattern1 inspect'>
+	^ self new roleMixinPattern1
+]
+
+{ #category : 'models' }
 OntoUMLExamples class >> exampleSubQuantityContainment [
 
-	<example: 'Containment, SubQuantityOf'>
-	^ (OPProject openOnModel: self new subQuantityOfEx1)
-		  showAllElementsInAllDiagrams
+	<script: 'self exampleSubQuantityContainment inspect'>
+	^ self new subQuantityOfEx1
 ]
 
 { #category : 'scripts' }
-OntoUMLExamples class >> openEmptyModel [
-	<script>
-	^ OPProject openOnModel: self new emptyModel
+OntoUMLExamples class >> openExample: aModel [
+
+	| project |
+	project := OPProject named: 'OntoUML Example'.
+	project addModel: aModel.
+	^ (OPWorkbench openProject: project) showAllElementsInAllDiagrams
+]
+
+{ #category : 'scripts' }
+OntoUMLExamples class >> openExampleEmptyModel [
+
+	<example>
+	^ OPProject openOnModel: self emptyModel
+]
+
+{ #category : 'examples' }
+OntoUMLExamples class >> openExampleRoleMixinPattern1 [
+
+	<example>
+	^ self openExample: self new roleMixinPattern1
+]
+
+{ #category : 'examples' }
+OntoUMLExamples class >> openExampleSubQuantityContainment [
+
+	<example>
+	^ self openExample: self exampleSubQuantityContainment
 ]
 
 { #category : 'support' }
@@ -141,14 +170,19 @@ OntoUMLExamples >> profile [
 OntoUMLExamples >> roleMixinPattern1 [
 	"https://ontouml.org/ufo/wiki/rolemixin/ Pattern 1"
 
-	<gtExample>
 	| model |
 	model := self roleMixinPattern1Base.
 	self applyStereotypeNamed: #Kind toName: 'Person' in: model.
 	self applyStereotypeNamed: #Kind toName: 'Company' in: model.
 	self applyStereotypeNamed: #RoleMixin toName: 'Customer' in: model.
-	self applyStereotypeNamed: #Role toName: 'Individual Customer' in: model.
-	self applyStereotypeNamed: #Role toName: 'Corporate Customer' in: model.
+	self
+		applyStereotypeNamed: #Role
+		toName: 'Individual Customer'
+		in: model.
+	self
+		applyStereotypeNamed: #Role
+		toName: 'Corporate Customer'
+		in: model.
 	^ model
 ]
 
@@ -156,7 +190,6 @@ OntoUMLExamples >> roleMixinPattern1 [
 OntoUMLExamples >> roleMixinPattern1Base [
 	"https://ontouml.org/ufo/wiki/rolemixin/ Pattern 1"
 
-	<gtExample>
 	| model customer person company individualCustomer corporateCustomer gs |
 	model := self emptyModel.
 	(customer := OPUMLClass new name: 'Customer') isAbstract: true.
@@ -164,10 +197,10 @@ OntoUMLExamples >> roleMixinPattern1Base [
 	company := OPUMLClass new name: 'Company'.
 	individualCustomer := OPUMLClass new name: 'Individual Customer'.
 	corporateCustomer := OPUMLClass new name: 'Corporate Customer'.
-	gs := (self
-		generalizationSetOn:
-			{self generalizationFrom: individualCustomer to: customer.
-			self generalizationFrom: corporateCustomer to: customer}) name: 'gs1'.
+	gs := (self generalizationSetOn: {
+			       (self generalizationFrom: individualCustomer to: customer).
+			       (self generalizationFrom: corporateCustomer to: customer) })
+		      name: 'gs1'.
 	self generalizationFrom: individualCustomer to: person.
 	self generalizationFrom: corporateCustomer to: company.
 	model packagedElements
@@ -182,20 +215,26 @@ OntoUMLExamples >> roleMixinPattern1Base [
 
 { #category : 'examples' }
 OntoUMLExamples >> subQuantityOfEx1 [
-	<gtExample>
+
 	| model |
 	model := self subQuantityOfEx1Base.
 	self applyStereotypeNamed: #Quantity toName: #Beer in: model.
 	self applyStereotypeNamed: #Quantity toName: #Alcohol in: model.
 	self applyStereotypeNamed: #Kind toName: #Barrel in: model.
-	self applyStereotypeNamed: #Containment toNamePair: #(Barrel Beer) in: model.
-	self applyStereotypeNamed: #SubQuantityOf toNamePair: #(Beer Alcohol) in: model.
+	self
+		applyStereotypeNamed: #Containment
+		toNamePair: #( Barrel Beer )
+		in: model.
+	self
+		applyStereotypeNamed: #SubQuantityOf
+		toNamePair: #( Beer Alcohol )
+		in: model.
 	^ model
 ]
 
 { #category : 'examples' }
 OntoUMLExamples >> subQuantityOfEx1Base [
-	<gtExample>
+
 	| model barrel beer alcohol containment subQuantity |
 	model := self emptyModel.
 	barrel := OPUMLClass new name: 'Barrel'.
