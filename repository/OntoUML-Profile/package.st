@@ -1,1 +1,1 @@
-Package { #name : #'OntoUML-Profile' }
+Package { #name : 'OntoUML-Profile' }

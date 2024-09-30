@@ -2,47 +2,51 @@
 I am a class representing the OntoUML profile itself.
 "
 Class {
-	#name : #OntoUMLProfileFactory,
-	#superclass : #OPUmlCustomProfile,
+	#name : 'OntoUMLProfileFactory',
+	#superclass : 'OPUmlCustomProfile',
 	#instVars : [
 		'profile'
 	],
-	#category : #'OntoUML-Profile-Model'
+	#category : 'OntoUML-Profile-Model',
+	#package : 'OntoUML-Profile',
+	#tag : 'Model'
 }
 
-{ #category : #actions }
-OntoUMLProfileFactory >> baseModel [
-	<gtExample>
-	| model wine alcohol subQuantity wineProp alcoholProp |
-	model := OPUmlExamples new emptyModel.
-	wine := OPUMLClass new name: 'Wine'.
-	alcohol := OPUMLClass new name: 'Alcohol'.
-	subQuantity := OPUMLAssociation new.
-	(wineProp := OPUMLProperty new)
-		name: 'wine';
-		lowerValue: (OPUMLLiteralInteger new value: 1);
-		upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
-		owningAssociation: subQuantity;
-		type: wine.
-	(alcoholProp := OPUMLProperty new)
-		name: 'alcohol';
-		lowerValue: (OPUMLLiteralInteger new value: 1);
-		upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
-		aggregation: OPUMLAggregationKind composite;
-		owningAssociation: subQuantity;
-		type: alcohol.
-	subQuantity
-		memberEnds:
-			{wineProp.
-			alcoholProp} asOrderedCollection.
-	model packagedElements
-		add: wine;
-		add: alcohol;
-		add: subQuantity.
-	^ model
+{ #category : 'actions' }
+OntoUMLProfileFactory class >> generate [
+
+	<script>
+	| model generator |
+	model := self profile.
+	generator := OPUMLProfileGenerator new.
+	generator sourceModel: model.
+	generator classPrefix: model implementationPrefix.
+	generator packageName: model implementationPackage.
+	(CBChangesBrowser changes: generator generateAll) open
 ]
 
-{ #category : #accessing }
+{ #category : 'actions' }
+OntoUMLProfileFactory class >> openProfile [
+
+	<script>
+	self new openProfile
+]
+
+{ #category : 'accessing' }
+OntoUMLProfileFactory class >> profile [
+
+	<script: 'self profile inspect'>
+	^ super profile
+]
+
+{ #category : 'accessing' }
+OntoUMLProfileFactory class >> reset [
+
+	<script>
+	super reset
+]
+
+{ #category : 'accessing' }
 OntoUMLProfileFactory >> createProfile [
 	profile ifNotNil: [ ^ profile ].
 	profile := OPUMLXMIReader readFrom: self xmi readStream.
@@ -52,35 +56,7 @@ OntoUMLProfileFactory >> createProfile [
 	^ profile
 ]
 
-{ #category : #example }
-OntoUMLProfileFactory >> example [
-	<gtExample>
-	| model profile quantityStereotype subQuantityOfStereotype |
-	model := self baseModel.
-	profile := self class profile.
-	model profileApplications
-		add:
-			(OPUMLProfileApplication new
-				uuid: model uuid , '-_profileApplication.0';
-				appliedProfile: profile).
-	quantityStereotype := profile packagedElements
-		detect: [ :each | each name = 'Quantity' ].
-	subQuantityOfStereotype := profile packagedElements
-		detect: [ :each | each name = 'SubQuantityOf' ].
-	model packagedElements
-		select: [ :each | each oclIsKindOf: #Class ]
-		thenDo: [ :each | each applyStereotype: quantityStereotype implementationClass new ].
-	model packagedElements
-		select: [ :each | each oclIsKindOf: #Association ]
-		thenDo: [ :each | 
-			| stereo |
-			stereo := subQuantityOfStereotype implementationClass new.
-			stereo essential: true.
-			each applyStereotype: stereo ].
-	^ model
-]
-
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> formalPair [
 	<gtExample>
 	| pair |
@@ -89,19 +65,7 @@ OntoUMLProfileFactory >> formalPair [
 	^ pair
 ]
 
-{ #category : #actions }
-OntoUMLProfileFactory >> generate [
-	<script: 'self new generate'>
-	| model generator |
-	model := self class profile.
-	generator := OPUMLProfileGenerator new.
-	generator sourceModel: model.
-	generator classPrefix: model implementationPrefix.
-	generator packageName: model implementationPackage.
-	(CBChangesBrowser changes: generator generateAll) open
-]
-
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> materialPair [
 
 	<gtExample>
@@ -110,7 +74,7 @@ OntoUMLProfileFactory >> materialPair [
 		  to: (self metaClassNamed: 'Association')
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> meronymicPair [
 	<gtExample>
 	| pair stereotype |
@@ -139,7 +103,7 @@ OntoUMLProfileFactory >> meronymicPair [
 	^ pair
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> momentPair [
 	<gtExample>
 	| classMetaclass pair stereotype |
@@ -150,7 +114,7 @@ OntoUMLProfileFactory >> momentPair [
 	^ pair
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> newStereotype: aName subclassOf: aParent [
 	| stereotype |
 	stereotype := OPUMLStereotype new
@@ -162,7 +126,7 @@ OntoUMLProfileFactory >> newStereotype: aName subclassOf: aParent [
 	^ stereotype
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> objectPair [
 	<gtExample>
 	| classMetaclass pair stereotype |
@@ -173,19 +137,13 @@ OntoUMLProfileFactory >> objectPair [
 	^ pair
 ]
 
-{ #category : #example }
-OntoUMLProfileFactory >> openExample [
-	<script: 'self new openExample'>
-	OPProject openOnModel: self example
-]
-
-{ #category : #actions }
+{ #category : 'actions' }
 OntoUMLProfileFactory >> openProfile [
-	<script: 'self new openProfile'>
-	OPProject openOnModel: self class profile
+
+	(OPProject openOnModel: self profile) showAllElementsInAllDiagrams
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLProfileFactory >> profile [
 	<gtExample>
 	| profile hierarchy |
@@ -221,7 +179,7 @@ OntoUMLProfileFactory >> profile [
 	^ profile
 ]
 
-{ #category : #parts }
+{ #category : 'parts' }
 OntoUMLProfileFactory >> profilePackage [
 	<gtExample>
 	^ OPUMLProfile new
@@ -233,13 +191,7 @@ OntoUMLProfileFactory >> profilePackage [
 		yourself
 ]
 
-{ #category : #actions }
-OntoUMLProfileFactory >> reset [
-	<script: 'self reset'>
-	self class reset
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLProfileFactory >> xmi [
 	^ 
 '<?xml version="1.0" encoding="UTF-8"?>

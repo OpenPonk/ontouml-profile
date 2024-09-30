@@ -1,19 +1,21 @@
 Class {
-	#name : #OntoUMLFormal,
-	#superclass : #OntoUMLElement,
+	#name : 'OntoUMLFormal',
+	#superclass : 'OntoUMLElement',
 	#instVars : [
 		'base_Association'
 	],
-	#category : 'OntoUML-Profile-OntoUML-Profile'
+	#category : 'OntoUML-Profile-Model',
+	#package : 'OntoUML-Profile',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLFormal >> base_Association [
 	""
 	^ base_Association
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLFormal >> base_Association: anAssociation [
 	""
 	|anOldBase_Association|
@@ -27,13 +29,13 @@ OntoUMLFormal >> base_Association: anAssociation [
 		to: base_Association
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLFormal >> initializeDirectGeneralizations [
 	directGeneralizations := {
 	}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLFormal >> initializeSharedGeneralizations [
 	sharedGeneralizations at: #Formal put: self.
 ]

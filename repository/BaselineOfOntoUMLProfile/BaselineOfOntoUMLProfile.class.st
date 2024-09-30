@@ -2,12 +2,13 @@
 Baseline for https://github.com/OpenPonk/ontouml-profile
 "
 Class {
-	#name : #BaselineOfOntoUMLProfile,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfOntoUMLProfile
+	#name : 'BaselineOfOntoUMLProfile',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfOntoUMLProfile',
+	#package : 'BaselineOfOntoUMLProfile'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfOntoUMLProfile >> baseline: spec [
 	<baseline>
 	spec

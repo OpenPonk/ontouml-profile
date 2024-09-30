@@ -1,48 +1,50 @@
 Class {
-	#name : #OntoUMLMemberOf,
-	#superclass : #OntoUMLElement,
-	#category : 'OntoUML-Profile-OntoUML-Profile'
+	#name : 'OntoUMLMemberOf',
+	#superclass : 'OntoUMLElement',
+	#category : 'OntoUML-Profile-Model',
+	#package : 'OntoUML-Profile',
+	#tag : 'Model'
 }
 
-{ #category : #'accessing - Meronymic' }
+{ #category : 'accessing - Meronymic' }
 OntoUMLMemberOf >> base_Association [
 	^ (sharedGeneralizations at: #Meronymic) base_Association
 ]
 
-{ #category : #'accessing - Meronymic' }
+{ #category : 'accessing - Meronymic' }
 OntoUMLMemberOf >> base_Association: anAssociation [
 	(sharedGeneralizations at: #Meronymic) base_Association: anAssociation
 ]
 
-{ #category : #'accessing - Meronymic' }
+{ #category : 'accessing - Meronymic' }
 OntoUMLMemberOf >> essential [
 	^ (sharedGeneralizations at: #Meronymic) essential
 ]
 
-{ #category : #'accessing - Meronymic' }
+{ #category : 'accessing - Meronymic' }
 OntoUMLMemberOf >> essential: aBoolean [
 	(sharedGeneralizations at: #Meronymic) essential: aBoolean
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLMemberOf >> initializeDirectGeneralizations [
 	directGeneralizations := {
 		sharedGeneralizations at: #Meronymic.
 	}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLMemberOf >> initializeSharedGeneralizations [
 	sharedGeneralizations at: #Meronymic put: (OntoUMLMeronymic newOnShared: sharedGeneralizations).
 	sharedGeneralizations at: #MemberOf put: self.
 ]
 
-{ #category : #'accessing - Meronymic' }
+{ #category : 'accessing - Meronymic' }
 OntoUMLMemberOf >> inseparable [
 	^ (sharedGeneralizations at: #Meronymic) inseparable
 ]
 
-{ #category : #'accessing - Meronymic' }
+{ #category : 'accessing - Meronymic' }
 OntoUMLMemberOf >> inseparable: aBoolean [
 	(sharedGeneralizations at: #Meronymic) inseparable: aBoolean
 ]

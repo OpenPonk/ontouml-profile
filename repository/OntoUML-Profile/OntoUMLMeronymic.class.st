@@ -1,21 +1,23 @@
 Class {
-	#name : #OntoUMLMeronymic,
-	#superclass : #OntoUMLElement,
+	#name : 'OntoUMLMeronymic',
+	#superclass : 'OntoUMLElement',
 	#instVars : [
 		'base_Association',
 		'essential',
 		'inseparable'
 	],
-	#category : 'OntoUML-Profile-OntoUML-Profile'
+	#category : 'OntoUML-Profile-Model',
+	#package : 'OntoUML-Profile',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLMeronymic >> base_Association [
 	""
 	^ base_Association
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLMeronymic >> base_Association: anAssociation [
 	""
 	|anOldBase_Association|
@@ -29,36 +31,36 @@ OntoUMLMeronymic >> base_Association: anAssociation [
 		to: base_Association
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLMeronymic >> essential [
 	""
 	^ essential ifNil: [ essential := false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLMeronymic >> essential: aBoolean [
 	""
 	essential := aBoolean
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLMeronymic >> initializeDirectGeneralizations [
 	directGeneralizations := {
 	}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OntoUMLMeronymic >> initializeSharedGeneralizations [
 	sharedGeneralizations at: #Meronymic put: self.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLMeronymic >> inseparable [
 	""
 	^ inseparable ifNil: [ inseparable := false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OntoUMLMeronymic >> inseparable: aBoolean [
 	""
 	inseparable := aBoolean
