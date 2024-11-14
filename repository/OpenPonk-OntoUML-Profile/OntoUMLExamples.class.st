@@ -27,36 +27,6 @@ OntoUMLExamples class >> exampleSubQuantityContainment [
 	^ self new subQuantityOfEx1
 ]
 
-{ #category : 'scripts' }
-OntoUMLExamples class >> openExample: aModel [
-
-	| project |
-	project := OPProject named: 'OntoUML Example'.
-	project addModel: aModel.
-	^ (OPWorkbench openProject: project) showAllElementsInAllDiagrams
-]
-
-{ #category : 'scripts' }
-OntoUMLExamples class >> openExampleEmptyModel [
-
-	<example>
-	^ OPProject openOnModel: self emptyModel
-]
-
-{ #category : 'examples' }
-OntoUMLExamples class >> openExampleRoleMixinPattern1 [
-
-	<example>
-	^ self openExample: self new roleMixinPattern1
-]
-
-{ #category : 'examples' }
-OntoUMLExamples class >> openExampleSubQuantityContainment [
-
-	<example>
-	^ self openExample: self exampleSubQuantityContainment
-]
-
 { #category : 'support' }
 OntoUMLExamples >> aggregatedFrom: leftSide to: rightSide [
 	| association leftProp rightProp |

@@ -1,9 +1,9 @@
 Class {
 	#name : 'OntoUMLPlugin',
 	#superclass : 'OPUmlClassEditorPlugin',
-	#category : 'OpenPonk-OntoUML-Plugin-plugin',
+	#category : 'OpenPonk-OntoUML-Plugin-Plugin',
 	#package : 'OpenPonk-OntoUML-Plugin',
-	#tag : 'plugin'
+	#tag : 'Plugin'
 }
 
 { #category : 'as yet unclassified' }

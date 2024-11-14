@@ -1,8 +1,8 @@
 Class {
 	#name : 'OPOntouml401oppProjectLoadTest',
 	#superclass : 'OPLegacyProjectLoadTest',
-	#category : 'OpenPonk-OntoUML-Profile-Tests',
-	#package : 'OpenPonk-OntoUML-Profile',
+	#category : 'OpenPonk-OntoUML-Plugin-Tests',
+	#package : 'OpenPonk-OntoUML-Plugin',
 	#tag : 'Tests'
 }
 

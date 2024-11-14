@@ -1,9 +1,9 @@
 Class {
 	#name : 'OntoUMLMenuItems',
 	#superclass : 'Object',
-	#category : 'OpenPonk-OntoUML-Plugin-menu',
+	#category : 'OpenPonk-OntoUML-Plugin-Menu',
 	#package : 'OpenPonk-OntoUML-Plugin',
-	#tag : 'menu'
+	#tag : 'Menu'
 }
 
 { #category : 'world menu' }

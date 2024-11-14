@@ -25,13 +25,6 @@ OntoUMLProfileFactory class >> generate [
 	(CBChangesBrowser changes: generator generateAll) open
 ]
 
-{ #category : 'actions' }
-OntoUMLProfileFactory class >> openProfile [
-
-	<script>
-	self new openProfile
-]
-
 { #category : 'accessing' }
 OntoUMLProfileFactory class >> profile [
 
@@ -135,12 +128,6 @@ OntoUMLProfileFactory >> objectPair [
 	stereotype := pair first.
 	stereotype isAbstract: true.
 	^ pair
-]
-
-{ #category : 'actions' }
-OntoUMLProfileFactory >> openProfile [
-
-	(OPProject openOnModel: self profile) showAllElementsInAllDiagrams
 ]
 
 { #category : 'accessing' }

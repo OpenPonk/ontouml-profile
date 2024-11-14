@@ -1,9 +1,9 @@
 Class {
 	#name : 'OntoUMLIcons',
 	#superclass : 'OPUmlIcons',
-	#category : 'OpenPonk-OntoUML-Plugin-icons',
+	#category : 'OpenPonk-OntoUML-Plugin-Icons',
 	#package : 'OpenPonk-OntoUML-Plugin',
-	#tag : 'icons'
+	#tag : 'Icons'
 }
 
 { #category : 'accessing - icons' }
