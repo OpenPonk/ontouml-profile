@@ -1,16 +1,16 @@
 SmalltalkCISpec {
 	#loading : [
 		SCIMetacelloLoadSpec {
-			#baseline : 'OntoUMLProfile',
+			#baseline : 'OpenPonkOntoUMLProfile',
 			#directory : 'repository',
 			#platforms : [ #pharo ]
 		}
 	],
 	#testing : {
-		#packages : [ 'OntoUML-Profile*' ],
+		#packages : [ 'OpenPonk*' ],
 		#failOnZeroTests : false,
 		#coverage : {
-			#packages : [ 'OntoUML-Profile*' ]
+			#packages : [ 'OpenPonk-OntoUML-Profile*' ]
 		}
 	}
 }
