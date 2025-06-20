@@ -17,7 +17,7 @@ OntoUMLPlugin >> icon [
 	^ OntoUMLIcons ontoumlIcon
 ]
 
-{ #category : 'accessing' }
+{ #category : 'testing' }
 OntoUMLPlugin >> isPluginFor: aModel [
 
 	^ ({ self modelClass } includes: aModel class) and: [ 
