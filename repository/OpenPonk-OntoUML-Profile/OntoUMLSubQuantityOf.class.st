@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«subQuantityOf»` stereotype applied to a UML Association. I model a meronymic (part-whole) relation between quantities (amounts of matter).
+"
 Class {
 	#name : 'OntoUMLSubQuantityOf',
 	#superclass : 'OntoUMLElement',

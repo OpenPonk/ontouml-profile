@@ -1,3 +1,6 @@
+"
+I am the core plugin class for OntoUML in OpenPonk. I register the OntoUML editor extension, supply the default OntoUML profile, and manage the initialization of new OntoUML models.
+"
 Class {
 	#name : 'OntoUMLPlugin',
 	#superclass : 'OPUmlClassEditorPlugin',
@@ -6,7 +9,7 @@ Class {
 	#tag : 'Plugin'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 OntoUMLPlugin class >> defaultProfiles [
 	^ {OntoUMLProfileFactory profile}
 ]

@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML stereotype for non-rigid mixins (such as RoleMixins and PhaseMixins) applied to a UML Class.
+"
 Class {
 	#name : 'OntoUMLNonRigidMixin',
 	#superclass : 'OntoUMLElement',

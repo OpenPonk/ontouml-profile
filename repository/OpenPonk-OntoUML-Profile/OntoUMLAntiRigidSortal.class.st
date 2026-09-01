@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«antiRigidSortal»` stereotype applied to a UML Class. I model a contingent (anti-rigid) concept that carries a principle of identity, such as a Role or Phase.
+"
 Class {
 	#name : 'OntoUMLAntiRigidSortal',
 	#superclass : 'OntoUMLElement',

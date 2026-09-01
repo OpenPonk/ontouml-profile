@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«quantity»` stereotype applied to a UML Class. I model a rigid sortal whose instances are amounts of matter (e.g., Water, Sand).
+"
 Class {
 	#name : 'OntoUMLQuantity',
 	#superclass : 'OntoUMLElement',

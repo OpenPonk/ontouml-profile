@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«containment»` stereotype applied to a UML Association. I model a topological or spatial inclusion relation between entities.
+"
 Class {
 	#name : 'OntoUMLContainment',
 	#superclass : 'OntoUMLElement',

@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML stereotype for objects (independent substantial entities) applied to a UML Class.
+"
 Class {
 	#name : 'OntoUMLObject',
 	#superclass : 'OntoUMLElement',

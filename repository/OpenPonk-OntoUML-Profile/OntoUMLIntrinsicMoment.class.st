@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«intrinsicMoment»` stereotype applied to a UML Class. I model existentially dependent entities such as qualities, modes, or dispositions that adhere to a single bearer.
+"
 Class {
 	#name : 'OntoUMLIntrinsicMoment',
 	#superclass : 'OntoUMLElement',

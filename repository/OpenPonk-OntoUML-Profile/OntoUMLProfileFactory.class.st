@@ -1,5 +1,5 @@
 "
-I am a class representing the OntoUML profile itself.
+I am a factory and builder for the OntoUML UML profile. I dynamically construct the profile, defining its ontology-based stereotypes for classes (like Kind, Collective) and associations (like Material, Mediation, ComponentOf).
 "
 Class {
 	#name : 'OntoUMLProfileFactory',
@@ -32,14 +32,14 @@ OntoUMLProfileFactory class >> profile [
 	^ super profile
 ]
 
-{ #category : 'accessing' }
+{ #category : 'class initialization' }
 OntoUMLProfileFactory class >> reset [
 
 	<script>
 	super reset
 ]
 
-{ #category : 'accessing' }
+{ #category : 'actions' }
 OntoUMLProfileFactory >> createProfile [
 	profile ifNotNil: [ ^ profile ].
 	profile := OPUMLXMIReader readFrom: self xmi readStream.
@@ -132,7 +132,7 @@ OntoUMLProfileFactory >> objectPair [
 
 { #category : 'accessing' }
 OntoUMLProfileFactory >> profile [
-	<gtExample>
+
 	| profile hierarchy |
 	profile := self profilePackage.
 	profile packagedElements addAll: self formalPair.

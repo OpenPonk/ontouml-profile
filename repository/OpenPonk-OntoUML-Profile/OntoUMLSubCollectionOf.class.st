@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«subCollectionOf»` stereotype applied to a UML Association. I model a meronymic (part-whole) relation between collections, tracking essential and inseparable constraints.
+"
 Class {
 	#name : 'OntoUMLSubCollectionOf',
 	#superclass : 'OntoUMLElement',

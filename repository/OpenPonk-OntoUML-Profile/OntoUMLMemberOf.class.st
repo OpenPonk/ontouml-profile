@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«memberOf»` stereotype applied to a UML Association. I model a meronymic (part-whole) relation where a member is part of a collective. I track whether the relation is essential or inseparable.
+"
 Class {
 	#name : 'OntoUMLMemberOf',
 	#superclass : 'OntoUMLElement',

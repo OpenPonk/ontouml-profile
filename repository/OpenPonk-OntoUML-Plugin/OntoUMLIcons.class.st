@@ -1,3 +1,6 @@
+"
+I provide specific icons for the OntoUML plugin, complementing and extending the standard UML icons provided by the core class editor.
+"
 Class {
 	#name : 'OntoUMLIcons',
 	#superclass : 'OPUmlIcons',

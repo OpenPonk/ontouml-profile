@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML stereotype for rigid mixins (like Categories) applied to a UML Class.
+"
 Class {
 	#name : 'OntoUMLRigidMixin',
 	#superclass : 'OntoUMLElement',

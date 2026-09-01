@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«subKind»` stereotype applied to a UML Class. I model a rigid sortal that inherits its principle of identity from a specific parent Kind (e.g., Man or Woman inheriting from Person).
+"
 Class {
 	#name : 'OntoUMLSubKind',
 	#superclass : 'OntoUMLElement',

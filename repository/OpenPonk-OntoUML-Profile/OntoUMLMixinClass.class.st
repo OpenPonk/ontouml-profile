@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML stereotype for mixin classes (non-sortals) applied to a UML Class. I generalize types that classify entities of different kinds, thus lacking a uniform principle of identity.
+"
 Class {
 	#name : 'OntoUMLMixinClass',
 	#superclass : 'OntoUMLElement',

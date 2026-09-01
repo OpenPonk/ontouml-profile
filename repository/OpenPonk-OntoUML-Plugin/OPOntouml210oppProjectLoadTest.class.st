@@ -1,3 +1,6 @@
+"
+I am a backward compatibility test class verifying that OntoUML projects saved in OpenPonk version 2.1.0 load correctly without data loss.
+"
 Class {
 	#name : 'OPOntouml210oppProjectLoadTest',
 	#superclass : 'OPLegacyProjectLoadTest',

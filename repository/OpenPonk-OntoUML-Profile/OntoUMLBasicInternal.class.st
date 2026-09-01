@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«basicInternal»` stereotype applied to a UML Association, used to model basic internal (formal) relations between entities.
+"
 Class {
 	#name : 'OntoUMLBasicInternal',
 	#superclass : 'OntoUMLElement',

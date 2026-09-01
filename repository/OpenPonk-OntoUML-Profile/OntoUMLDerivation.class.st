@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«derivation»` stereotype applied to a UML Association. I model the relationship connecting a material relation to the truth-maker (relator) that derives it.
+"
 Class {
 	#name : 'OntoUMLDerivation',
 	#superclass : 'OntoUMLElement',

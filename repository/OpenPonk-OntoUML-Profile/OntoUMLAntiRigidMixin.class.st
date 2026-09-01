@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«antiRigidMixin»` stereotype applied to a UML Class. I model a property that applies to instances of different kinds and is contingent (anti-rigid), such as a RoleMixin or PhaseMixin.
+"
 Class {
 	#name : 'OntoUMLAntiRigidMixin',
 	#superclass : 'OntoUMLElement',

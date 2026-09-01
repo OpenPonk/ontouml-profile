@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«relator»` stereotype applied to a UML Class. I model an existentially dependent entity that mediates two or more other entities, serving as the truth-maker for material relations.
+"
 Class {
 	#name : 'OntoUMLRelator',
 	#superclass : 'OntoUMLElement',

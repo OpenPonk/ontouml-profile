@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«formal»` stereotype applied to a UML Association. I model a formal relation that holds directly between entities without requiring an intervening truth-maker (relator).
+"
 Class {
 	#name : 'OntoUMLFormal',
 	#superclass : 'OntoUMLElement',

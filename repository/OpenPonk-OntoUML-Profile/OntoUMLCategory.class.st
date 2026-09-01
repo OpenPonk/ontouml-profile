@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«category»` stereotype applied to a UML Class. I model a rigid mixin that represents essential properties common to entities of different kinds.
+"
 Class {
 	#name : 'OntoUMLCategory',
 	#superclass : 'OntoUMLElement',

@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«quality»` stereotype applied to a UML Class. I model an intrinsic moment that is directly measurable or perceivable and can be mapped to a conceptual space (e.g., color, weight).
+"
 Class {
 	#name : 'OntoUMLQuality',
 	#superclass : 'OntoUMLElement',

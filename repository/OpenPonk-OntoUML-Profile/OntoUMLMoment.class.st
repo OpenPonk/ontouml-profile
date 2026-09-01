@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML stereotype for moments (existentially dependent entities like qualities, modes, and relators) applied to a UML Class.
+"
 Class {
 	#name : 'OntoUMLMoment',
 	#superclass : 'OntoUMLElement',

@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«material»` stereotype applied to a UML Association. I model a relation that is existentially dependent on an external relator (a truth-maker) to connect its endpoints.
+"
 Class {
 	#name : 'OntoUMLMaterial',
 	#superclass : 'OntoUMLElement',
