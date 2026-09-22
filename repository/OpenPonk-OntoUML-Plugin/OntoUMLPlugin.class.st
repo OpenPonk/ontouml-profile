@@ -14,6 +14,23 @@ OntoUMLPlugin class >> defaultProfiles [
 	^ {OntoUMLProfileFactory profile}
 ]
 
+{ #category : 'templates' }
+OntoUMLPlugin >> exampleProjectTemplates [
+	"Answers example project templates for OntoUML UFO-A diagrams."
+
+	^ { 
+		(OPProjectTemplate
+			named: 'Role Mixin Pattern'
+			icon: self icon
+			modelFactory: [ OntoUMLExamples exampleRoleMixinPattern1 ]
+			isExample: true).
+		(OPProjectTemplate
+			named: 'Containment, SubQuantityOf'
+			icon: self icon
+			modelFactory: [ OntoUMLExamples exampleSubQuantityContainment ]
+			isExample: true) }
+]
+
 { #category : 'accessing' }
 OntoUMLPlugin >> icon [
 
