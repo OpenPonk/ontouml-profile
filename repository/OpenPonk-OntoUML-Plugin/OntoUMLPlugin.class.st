@@ -14,6 +14,18 @@ OntoUMLPlugin class >> defaultProfiles [
 	^ {OntoUMLProfileFactory profile}
 ]
 
+{ #category : 'accessing' }
+OntoUMLPlugin class >> repositoryName [
+	^ #'ontouml-editor'
+]
+
+{ #category : 'accessing' }
+OntoUMLPlugin class >> requiredPluginClasses [
+	"Answers prerequisite plugin classes needed by OntoUML."
+
+	^ { OPUmlClassEditorPlugin }
+]
+
 { #category : 'templates' }
 OntoUMLPlugin >> exampleProjectTemplates [
 	"Answers example project templates for OntoUML UFO-A diagrams."
