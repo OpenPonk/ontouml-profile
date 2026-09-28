@@ -1,3 +1,6 @@
+"
+Verifies the initialization, profile attachment, and shutdown lifecycle of the OntoUML plugin.
+"
 Class {
 	#name : 'OntoUMLPluginLifecycleTest',
 	#superclass : 'OPAbstractPluginExampleLifecycleTest',

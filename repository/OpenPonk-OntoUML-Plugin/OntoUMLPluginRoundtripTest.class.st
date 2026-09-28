@@ -1,3 +1,6 @@
+"
+Verifies the serialization and deserialization roundtrip persistence for OntoUML models.
+"
 Class {
 	#name : 'OntoUMLPluginRoundtripTest',
 	#superclass : 'OPAbstractPluginExampleRoundtripTest',

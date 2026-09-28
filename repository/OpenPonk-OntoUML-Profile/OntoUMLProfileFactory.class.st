@@ -25,6 +25,19 @@ OntoUMLProfileFactory class >> generate [
 	(CBChangesBrowser changes: generator generateAll) open
 ]
 
+{ #category : 'testing' }
+OntoUMLProfileFactory class >> isAppliedTo: anEditor [
+	"Answers true if the OntoUML profile is applied to the UML model of the active editor."
+	| activeDiagramController activeModel |
+	(anEditor isNotNil and: [ anEditor plugin isKindOf: OPUmlClassEditorPlugin ]) ifFalse: [ ^ false ].
+	activeDiagramController := anEditor diagramController.
+	(activeDiagramController isNotNil and: [ activeDiagramController model isNotNil ]) ifFalse: [ ^ false ].
+	activeModel := activeDiagramController model.
+	(activeModel respondsTo: #profileApplications) ifFalse: [ ^ false ].
+	^ activeModel profileApplications anySatisfy: [ :eachProfileApplication | 
+		eachProfileApplication appliedProfile isNotNil and: [ eachProfileApplication appliedProfile name = 'OntoUML' ] ]
+]
+
 { #category : 'accessing' }
 OntoUMLProfileFactory class >> profile [
 
