@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«mode»` stereotype applied to a UML Class. I model an intrinsic moment (an existentially dependent entity) that is not directly measurable as a simple value, such as a belief, desire, or symptom.
+"
 Class {
 	#name : 'OntoUMLMode',
 	#superclass : 'OntoUMLElement',

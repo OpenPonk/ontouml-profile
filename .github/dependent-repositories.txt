@@ -1,5 +1,1 @@
-{
-	"include" : [
-		{ "repository" : "OpenPonk/ontouml-modelquery", "build-dependent" : true }
-	]
-}
+{	"include" : [		{ "repository" : "OpenPonk/ontouml-modelquery", "branch" : "master", "build-dependent" : true },		{ "repository" : "OpenPonk/ontouml-patterns", "branch" : "master", "build-dependent" : true }	]}

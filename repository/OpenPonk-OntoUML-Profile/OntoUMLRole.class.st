@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«role»` stereotype applied to a UML Class. I model an anti-rigid sortal whose instances contingently instantiate it based on relational properties or extrinsic events (e.g., Student, Customer).
+"
 Class {
 	#name : 'OntoUMLRole',
 	#superclass : 'OntoUMLElement',

@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«componentOf»` stereotype applied to a UML Association. I model a specific type of meronymic (part-whole) relation where a functional component is part of a complex system. I track whether the relation is essential or inseparable.
+"
 Class {
 	#name : 'OntoUMLComponentOf',
 	#superclass : 'OntoUMLElement',

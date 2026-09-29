@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«kind»` stereotype applied to a UML Class. I model a rigid sortal that provides a principle of identity for its instances (e.g., Person, Car, Organization).
+"
 Class {
 	#name : 'OntoUMLKind',
 	#superclass : 'OntoUMLElement',

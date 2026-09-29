@@ -1,5 +1,5 @@
 "
-I am an abstract class for OntoUML implementing some behavior for managing the classes and other stuff.
+I am the abstract base class for all OntoUML stereotypes. I provide common behavior for managing the underlying UML metamodel elements they extend.
 "
 Class {
 	#name : 'OntoUMLElement',

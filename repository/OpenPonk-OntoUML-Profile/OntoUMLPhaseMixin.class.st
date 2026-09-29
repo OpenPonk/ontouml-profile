@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«phaseMixin»` stereotype applied to a UML Class. I model an anti-rigid non-sortal whose instances of different kinds contingently instantiate it based on intrinsic properties.
+"
 Class {
 	#name : 'OntoUMLPhaseMixin',
 	#superclass : 'OntoUMLElement',

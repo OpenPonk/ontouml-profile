@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«domainFormal»` stereotype applied to a UML Association. I model a domain-specific formal relation.
+"
 Class {
 	#name : 'OntoUMLDomainFormal',
 	#superclass : 'OntoUMLElement',

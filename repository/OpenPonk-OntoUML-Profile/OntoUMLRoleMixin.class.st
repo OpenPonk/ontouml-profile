@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«roleMixin»` stereotype applied to a UML Class. I model an anti-rigid non-sortal whose instances of different kinds contingently instantiate it based on shared relational properties or contexts.
+"
 Class {
 	#name : 'OntoUMLRoleMixin',
 	#superclass : 'OntoUMLElement',

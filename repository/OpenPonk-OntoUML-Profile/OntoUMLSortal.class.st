@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML stereotype for sortal classes applied to a UML Class. I generalize types that carry a uniform principle of identity for their instances.
+"
 Class {
 	#name : 'OntoUMLSortal',
 	#superclass : 'OntoUMLElement',

@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«mediation»` stereotype applied to a UML Association. I model the existential dependence relation connecting a relator to the entities it mediates.
+"
 Class {
 	#name : 'OntoUMLMediation',
 	#superclass : 'OntoUMLElement',

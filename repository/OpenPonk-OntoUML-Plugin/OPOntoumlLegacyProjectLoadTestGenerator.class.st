@@ -1,3 +1,6 @@
+"
+I am a testing utility responsible for generating backward-compatibility test payloads specifically for legacy OntoUML projects.
+"
 Class {
 	#name : 'OPOntoumlLegacyProjectLoadTestGenerator',
 	#superclass : 'OPLegacyProjectLoadTestGenerator',

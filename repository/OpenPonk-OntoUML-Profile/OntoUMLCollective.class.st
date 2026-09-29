@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«collective»` stereotype applied to a UML Class. I model a rigid sortal whose instances are pluralities or collections of entities.
+"
 Class {
 	#name : 'OntoUMLCollective',
 	#superclass : 'OntoUMLElement',

@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML stereotype for substance sortals applied to a UML Class. I generalize rigid sortals that provide principles of identity for their instances (like Kind, Collective, and Quantity).
+"
 Class {
 	#name : 'OntoUMLSubstanceSortal',
 	#superclass : 'OntoUMLElement',

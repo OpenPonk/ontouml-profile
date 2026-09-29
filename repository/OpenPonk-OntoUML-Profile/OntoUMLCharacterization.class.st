@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«characterization»` stereotype applied to a UML Association. I model the existential dependence relationship between an IntrinsicMoment (like a Quality or Mode) and its bearer.
+"
 Class {
 	#name : 'OntoUMLCharacterization',
 	#superclass : 'OntoUMLElement',

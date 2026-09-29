@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«mixin»` stereotype applied to a UML Class. I model a semi-rigid non-sortal that classifies entities of multiple kinds, being essential to some instances and contingent to others.
+"
 Class {
 	#name : 'OntoUMLMixin',
 	#superclass : 'OntoUMLElement',

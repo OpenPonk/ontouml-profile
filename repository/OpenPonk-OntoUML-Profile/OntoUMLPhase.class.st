@@ -1,3 +1,6 @@
+"
+I represent the OntoUML `«phase»` stereotype applied to a UML Class. I model an anti-rigid sortal whose instances contingently instantiate it based on intrinsic changes or conditions (e.g., Child, Adult).
+"
 Class {
 	#name : 'OntoUMLPhase',
 	#superclass : 'OntoUMLElement',

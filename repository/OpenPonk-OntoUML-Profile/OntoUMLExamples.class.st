@@ -1,3 +1,6 @@
+"
+I provide a collection of executable examples demonstrating OntoUML models and modeling patterns (such as RoleMixin and SubQuantity Containment) within the OpenPonk environment.
+"
 Class {
 	#name : 'OntoUMLExamples',
 	#superclass : 'Object',
@@ -29,6 +32,7 @@ OntoUMLExamples class >> exampleSubQuantityContainment [
 
 { #category : 'support' }
 OntoUMLExamples >> aggregatedFrom: leftSide to: rightSide [
+
 	| association leftProp rightProp |
 	association := OPUMLAssociation new.
 	(leftProp := OPUMLProperty new)
@@ -44,7 +48,7 @@ OntoUMLExamples >> aggregatedFrom: leftSide to: rightSide [
 		aggregation: OPUMLAggregationKind composite;
 		owningAssociation: association;
 		type: rightSide.
-	association memberEnds addAll: association ownedEnds asArray.
+	association memberEnds addAll: association ownedEnds.
 	^ association
 ]
 
@@ -82,6 +86,7 @@ OntoUMLExamples >> applyStereotypeNamed: aStereotypeName toNamePair: aNamePair i
 
 { #category : 'support' }
 OntoUMLExamples >> associationFrom: leftSide to: rightSide [
+
 	| association leftProp rightProp |
 	association := OPUMLAssociation new.
 	(leftProp := OPUMLProperty new)
@@ -96,7 +101,7 @@ OntoUMLExamples >> associationFrom: leftSide to: rightSide [
 		upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
 		owningAssociation: association;
 		type: rightSide.
-	association memberEnds addAll: association ownedEnds asArray.
+	association memberEnds addAll: association ownedEnds.
 	^ association
 ]
 

@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML meronymic (part-whole) stereotype applied to a UML Association. I provide common properties like `essential` and `inseparable` for concrete meronymic relations.
+"
 Class {
 	#name : 'OntoUMLMeronymic',
 	#superclass : 'OntoUMLElement',

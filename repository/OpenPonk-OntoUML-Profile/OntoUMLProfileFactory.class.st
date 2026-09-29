@@ -1,5 +1,5 @@
 "
-I am a class representing the OntoUML profile itself.
+I am a factory and builder for the OntoUML UML profile. I dynamically construct the profile, defining its ontology-based stereotypes for classes (like Kind, Collective) and associations (like Material, Mediation, ComponentOf).
 "
 Class {
 	#name : 'OntoUMLProfileFactory',
@@ -25,6 +25,19 @@ OntoUMLProfileFactory class >> generate [
 	(CBChangesBrowser changes: generator generateAll) open
 ]
 
+{ #category : 'testing' }
+OntoUMLProfileFactory class >> isAppliedTo: anEditor [
+	"Answers true if the OntoUML profile is applied to the UML model of the active editor."
+	| activeDiagramController activeModel |
+	(anEditor isNotNil and: [ anEditor plugin isKindOf: OPUmlClassEditorPlugin ]) ifFalse: [ ^ false ].
+	activeDiagramController := anEditor diagramController.
+	(activeDiagramController isNotNil and: [ activeDiagramController model isNotNil ]) ifFalse: [ ^ false ].
+	activeModel := activeDiagramController model.
+	(activeModel respondsTo: #profileApplications) ifFalse: [ ^ false ].
+	^ activeModel profileApplications anySatisfy: [ :eachProfileApplication | 
+		eachProfileApplication appliedProfile isNotNil and: [ eachProfileApplication appliedProfile name = 'OntoUML' ] ]
+]
+
 { #category : 'accessing' }
 OntoUMLProfileFactory class >> profile [
 
@@ -32,14 +45,14 @@ OntoUMLProfileFactory class >> profile [
 	^ super profile
 ]
 
-{ #category : 'accessing' }
+{ #category : 'class initialization' }
 OntoUMLProfileFactory class >> reset [
 
 	<script>
 	super reset
 ]
 
-{ #category : 'accessing' }
+{ #category : 'actions' }
 OntoUMLProfileFactory >> createProfile [
 	profile ifNotNil: [ ^ profile ].
 	profile := OPUMLXMIReader readFrom: self xmi readStream.
@@ -132,7 +145,7 @@ OntoUMLProfileFactory >> objectPair [
 
 { #category : 'accessing' }
 OntoUMLProfileFactory >> profile [
-	<gtExample>
+
 	| profile hierarchy |
 	profile := self profilePackage.
 	profile packagedElements addAll: self formalPair.

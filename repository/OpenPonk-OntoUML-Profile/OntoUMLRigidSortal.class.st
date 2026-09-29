@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML stereotype for rigid sortals (like Kinds, SubKinds, Collectives, and Quantities) applied to a UML Class.
+"
 Class {
 	#name : 'OntoUMLRigidSortal',
 	#superclass : 'OntoUMLElement',

@@ -1,3 +1,6 @@
+"
+I represent an abstract OntoUML stereotype for semi-rigid mixins applied to a UML Class. I model types that are essential to some of their instances but contingent to others.
+"
 Class {
 	#name : 'OntoUMLSemiRigidMixin',
 	#superclass : 'OntoUMLElement',
