@@ -10,6 +10,13 @@ OntoUMLExamples class >> openExample: aModel [
 ]
 
 { #category : '*OpenPonk-OntoUML-Plugin' }
+OntoUMLExamples class >> openExampleAlcohol [
+
+	<example>
+	^ self openExample: self exampleAlcohol
+]
+
+{ #category : '*OpenPonk-OntoUML-Plugin' }
 OntoUMLExamples class >> openExampleEmptyModel [
 
 	<example>
@@ -21,11 +28,4 @@ OntoUMLExamples class >> openExampleRoleMixinPattern1 [
 
 	<example>
 	^ self openExample: self new roleMixinPattern1
-]
-
-{ #category : '*OpenPonk-OntoUML-Plugin' }
-OntoUMLExamples class >> openExampleSubQuantityContainment [
-
-	<example>
-	^ self openExample: self exampleSubQuantityContainment
 ]

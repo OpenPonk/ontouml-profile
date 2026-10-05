@@ -12,5 +12,5 @@ Class {
 { #category : 'hooks' }
 OPOntoumlLegacyProjectLoadTestGenerator >> model [
 
-	^ OntoUMLExamples exampleSubQuantityContainment
+	^ OntoUMLExamples exampleAlcohol
 ]

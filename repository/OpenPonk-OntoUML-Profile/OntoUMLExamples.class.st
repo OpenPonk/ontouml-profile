@@ -17,17 +17,29 @@ OntoUMLExamples class >> emptyModel [
 ]
 
 { #category : 'models' }
+OntoUMLExamples class >> exampleAlcohol [
+
+	<script: 'self exampleSubQuantityContainment inspect'>
+	^ self new subQuantityOfEx1
+]
+
+{ #category : 'examples' }
+OntoUMLExamples class >> exampleBloodDonation [
+	<script: 'self exampleBloodDonation inspect'>
+	^ self new bloodDonation
+]
+
+{ #category : 'models' }
 OntoUMLExamples class >> exampleRoleMixinPattern1 [
 
 	<script: 'self exampleRoleMixinPattern1 inspect'>
 	^ self new roleMixinPattern1
 ]
 
-{ #category : 'models' }
-OntoUMLExamples class >> exampleSubQuantityContainment [
-
-	<script: 'self exampleSubQuantityContainment inspect'>
-	^ self new subQuantityOfEx1
+{ #category : 'examples' }
+OntoUMLExamples class >> openExampleBloodDonation [
+	<example>
+	^ self openExample: self exampleBloodDonation
 ]
 
 { #category : 'support' }
@@ -103,6 +115,99 @@ OntoUMLExamples >> associationFrom: leftSide to: rightSide [
 		type: rightSide.
 	association memberEnds addAll: association ownedEnds.
 	^ association
+]
+
+{ #category : 'examples' }
+OntoUMLExamples >> bloodDonation [
+	| model profile applyStereo createAssoc classes genHealthy genDeferred genSet |
+	model := self emptyModel name: 'Blood Donation'.
+	profile := self profile.
+	classes := Dictionary new.
+
+	applyStereo := [ :element :stereoName |
+		| stereoClass |
+		stereoClass := (profile ownedStereotype detect: [ :s | s name = stereoName ]) implementationClass.
+		element applyStereotype: stereoClass new ].
+
+	createAssoc := [ :sourceElement :targetElement :stereoName :assocName |
+		| assoc sourceEnd targetEnd |
+		assoc := OPUMLAssociation new name: assocName.
+		sourceEnd := OPUMLProperty new
+			name: '';
+			lowerValue: (OPUMLLiteralInteger new value: 1);
+			upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
+			owningAssociation: assoc;
+			type: sourceElement.
+		targetEnd := OPUMLProperty new
+			name: '';
+			lowerValue: (OPUMLLiteralInteger new value: 1);
+			upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
+			owningAssociation: assoc;
+			type: targetElement.
+		assoc memberEnds addAll: assoc ownedEnds.
+		model packagedElements add: assoc.
+		applyStereo value: assoc value: stereoName.
+		assoc ].
+
+	#(
+		('PhysicalEntity' 'Category')
+		('InsuredEntity' 'Mixin')
+		('ClinicalClient' 'RoleMixin')
+		('EligibleEntity' 'PhaseMixin')
+		('Person' 'Kind')
+		('FemalePerson' 'SubKind')
+		('HealthyPerson' 'Phase')
+		('DeferredPerson' 'Phase')
+		('BloodDonor' 'Role')
+		('Nurse' 'Role')
+		('MedicalStaff' 'Collective')
+		('MobileDriveUnit' 'Collective')
+		('WholeBlood' 'Quantity')
+		('BloodPlasma' 'Quantity')
+		('BloodBag' 'Kind')
+		('DonationKit' 'Kind')
+		('BloodDonation' 'Relator')
+		('BloodType' 'Mode')
+		('HemoglobinLevel' 'Quality')
+	) do: [ :pair |
+		| cls |
+		cls := OPUMLClass new name: pair first.
+		applyStereo value: cls value: pair second.
+		model packagedElements add: cls.
+		classes at: pair first put: cls ].
+
+	model packagedElements add: (self generalizationFrom: (classes at: 'FemalePerson') to: (classes at: 'Person')).
+	model packagedElements add: (self generalizationFrom: (classes at: 'BloodDonor') to: (classes at: 'HealthyPerson')).
+	model packagedElements add: (self generalizationFrom: (classes at: 'BloodDonor') to: (classes at: 'ClinicalClient')).
+	model packagedElements add: (self generalizationFrom: (classes at: 'HealthyPerson') to: (classes at: 'EligibleEntity')).
+	model packagedElements add: (self generalizationFrom: (classes at: 'Nurse') to: (classes at: 'Person')).
+	model packagedElements add: (self generalizationFrom: (classes at: 'Person') to: (classes at: 'PhysicalEntity')).
+	model packagedElements add: (self generalizationFrom: (classes at: 'Person') to: (classes at: 'InsuredEntity')).
+
+	genHealthy := self generalizationFrom: (classes at: 'HealthyPerson') to: (classes at: 'Person').
+	genDeferred := self generalizationFrom: (classes at: 'DeferredPerson') to: (classes at: 'Person').
+	genSet := (self generalizationSetOn: { genHealthy . genDeferred })
+		name: 'gsDonorPhases';
+		isDisjoint: true;
+		isCovering: true.
+	model packagedElements add: genHealthy; add: genDeferred; add: genSet.
+
+	createAssoc value: (classes at: 'BloodDonation') value: (classes at: 'BloodDonor') value: 'Mediation' value: 'medDonor'.
+	createAssoc value: (classes at: 'BloodDonation') value: (classes at: 'Nurse') value: 'Mediation' value: 'medNurse'.
+	createAssoc value: (classes at: 'BloodDonor') value: (classes at: 'Nurse') value: 'Material' value: 'donatesWith'.
+	createAssoc value: (classes at: 'BloodDonor') value: (classes at: 'HemoglobinLevel') value: 'Characterization' value: 'charHemoglobin'.
+	createAssoc value: (classes at: 'BloodDonor') value: (classes at: 'BloodType') value: 'Characterization' value: 'charBloodType'.
+	createAssoc value: (classes at: 'MedicalStaff') value: (classes at: 'Nurse') value: 'MemberOf' value: 'staffMember'.
+	createAssoc value: (classes at: 'MedicalStaff') value: (classes at: 'MobileDriveUnit') value: 'SubCollectionOf' value: 'subStaff'.
+	createAssoc value: (classes at: 'WholeBlood') value: (classes at: 'BloodPlasma') value: 'SubQuantityOf' value: 'plasmaFraction'.
+	createAssoc value: (classes at: 'BloodBag') value: (classes at: 'WholeBlood') value: 'Containment' value: 'containedBlood'.
+	(createAssoc value: (classes at: 'DonationKit') value: (classes at: 'BloodBag') value: 'ComponentOf' value: 'kitBag')
+		appliedStereotypes first
+			essential: true;
+			inseparable: true.
+	createAssoc value: (classes at: 'Person') value: (classes at: 'Person') value: 'DomainFormal' value: 'isCompatibleDonor'.
+
+	^ model
 ]
 
 { #category : 'examples' }

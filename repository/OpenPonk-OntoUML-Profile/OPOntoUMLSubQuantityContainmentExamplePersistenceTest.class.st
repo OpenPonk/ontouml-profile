@@ -12,5 +12,5 @@ Class {
 { #category : 'hooks' }
 OPOntoUMLSubQuantityContainmentExamplePersistenceTest >> createExampleModel [
 
-	^ OntoUMLExamples exampleSubQuantityContainment
+	^ OntoUMLExamples exampleAlcohol
 ]
