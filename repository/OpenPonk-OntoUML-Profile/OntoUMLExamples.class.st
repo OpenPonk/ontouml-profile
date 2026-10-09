@@ -36,12 +36,6 @@ OntoUMLExamples class >> exampleRoleMixinPattern1 [
 	^ self new roleMixinPattern1
 ]
 
-{ #category : 'examples' }
-OntoUMLExamples class >> openExampleBloodDonation [
-	<example>
-	^ self openExample: self exampleBloodDonation
-]
-
 { #category : 'support' }
 OntoUMLExamples >> aggregatedFrom: leftSide to: rightSide [
 
@@ -119,36 +113,33 @@ OntoUMLExamples >> associationFrom: leftSide to: rightSide [
 
 { #category : 'examples' }
 OntoUMLExamples >> bloodDonation [
-	| model profile applyStereo createAssoc classes genHealthy genDeferred genSet |
+	| model profile applyStereotype createAssociation classesDictionary generalizationHealthy generalizationDeferred generalizationSet |
 	model := self emptyModel name: 'Blood Donation'.
 	profile := self profile.
-	classes := Dictionary new.
-
-	applyStereo := [ :element :stereoName |
-		| stereoClass |
-		stereoClass := (profile ownedStereotype detect: [ :s | s name = stereoName ]) implementationClass.
-		element applyStereotype: stereoClass new ].
-
-	createAssoc := [ :sourceElement :targetElement :stereoName :assocName |
-		| assoc sourceEnd targetEnd |
-		assoc := OPUMLAssociation new name: assocName.
-		sourceEnd := OPUMLProperty new
+	classesDictionary := Dictionary new.
+	applyStereotype := [ :element :stereotypeName |
+		| stereotypeClass |
+		stereotypeClass := (profile ownedStereotype detect: [ :eachStereotype | eachStereotype name = stereotypeName ]) implementationClass.
+		element applyStereotype: stereotypeClass new ].
+	createAssociation := [ :sourceElement :targetElement :stereotypeName :associationName |
+		| association sourceEndProperty targetEndProperty |
+		association := OPUMLAssociation new name: associationName.
+		sourceEndProperty := OPUMLProperty new
 			name: '';
 			lowerValue: (OPUMLLiteralInteger new value: 1);
 			upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
-			owningAssociation: assoc;
+			owningAssociation: association;
 			type: sourceElement.
-		targetEnd := OPUMLProperty new
+		targetEndProperty := OPUMLProperty new
 			name: '';
 			lowerValue: (OPUMLLiteralInteger new value: 1);
 			upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
-			owningAssociation: assoc;
+			owningAssociation: association;
 			type: targetElement.
-		assoc memberEnds addAll: assoc ownedEnds.
-		model packagedElements add: assoc.
-		applyStereo value: assoc value: stereoName.
-		assoc ].
-
+		association memberEnds addAll: association ownedEnds.
+		model packagedElements add: association.
+		applyStereotype value: association value: stereotypeName.
+		association ].
 	#(
 		('PhysicalEntity' 'Category')
 		('InsuredEntity' 'Mixin')
@@ -169,44 +160,42 @@ OntoUMLExamples >> bloodDonation [
 		('BloodDonation' 'Relator')
 		('BloodType' 'Mode')
 		('HemoglobinLevel' 'Quality')
-	) do: [ :pair |
-		| cls |
-		cls := OPUMLClass new name: pair first.
-		applyStereo value: cls value: pair second.
-		model packagedElements add: cls.
-		classes at: pair first put: cls ].
+	) do: [ :nameStereotypePair |
+		| classElement |
+		classElement := OPUMLClass new name: nameStereotypePair first.
+		applyStereotype value: classElement value: nameStereotypePair second.
+		model packagedElements add: classElement.
+		classesDictionary at: nameStereotypePair first put: classElement ].
 
-	model packagedElements add: (self generalizationFrom: (classes at: 'FemalePerson') to: (classes at: 'Person')).
-	model packagedElements add: (self generalizationFrom: (classes at: 'BloodDonor') to: (classes at: 'HealthyPerson')).
-	model packagedElements add: (self generalizationFrom: (classes at: 'BloodDonor') to: (classes at: 'ClinicalClient')).
-	model packagedElements add: (self generalizationFrom: (classes at: 'HealthyPerson') to: (classes at: 'EligibleEntity')).
-	model packagedElements add: (self generalizationFrom: (classes at: 'Nurse') to: (classes at: 'Person')).
-	model packagedElements add: (self generalizationFrom: (classes at: 'Person') to: (classes at: 'PhysicalEntity')).
-	model packagedElements add: (self generalizationFrom: (classes at: 'Person') to: (classes at: 'InsuredEntity')).
-
-	genHealthy := self generalizationFrom: (classes at: 'HealthyPerson') to: (classes at: 'Person').
-	genDeferred := self generalizationFrom: (classes at: 'DeferredPerson') to: (classes at: 'Person').
-	genSet := (self generalizationSetOn: { genHealthy . genDeferred })
+	self generalizationFrom: (classesDictionary at: 'FemalePerson') to: (classesDictionary at: 'Person').
+	self generalizationFrom: (classesDictionary at: 'BloodDonor') to: (classesDictionary at: 'HealthyPerson').
+	self generalizationFrom: (classesDictionary at: 'BloodDonor') to: (classesDictionary at: 'ClinicalClient').
+	self generalizationFrom: (classesDictionary at: 'HealthyPerson') to: (classesDictionary at: 'EligibleEntity').
+	self generalizationFrom: (classesDictionary at: 'Nurse') to: (classesDictionary at: 'Person').
+	self generalizationFrom: (classesDictionary at: 'Person') to: (classesDictionary at: 'PhysicalEntity').
+	self generalizationFrom: (classesDictionary at: 'Person') to: (classesDictionary at: 'InsuredEntity').
+	generalizationHealthy := self generalizationFrom: (classesDictionary at: 'HealthyPerson') to: (classesDictionary at: 'Person').
+	generalizationDeferred := self generalizationFrom: (classesDictionary at: 'DeferredPerson') to: (classesDictionary at: 'Person').
+	generalizationSet := (self generalizationSetOn: { generalizationHealthy . generalizationDeferred })
 		name: 'gsDonorPhases';
 		isDisjoint: true;
 		isCovering: true.
-	model packagedElements add: genHealthy; add: genDeferred; add: genSet.
+	model packagedElements add: generalizationSet.
 
-	createAssoc value: (classes at: 'BloodDonation') value: (classes at: 'BloodDonor') value: 'Mediation' value: 'medDonor'.
-	createAssoc value: (classes at: 'BloodDonation') value: (classes at: 'Nurse') value: 'Mediation' value: 'medNurse'.
-	createAssoc value: (classes at: 'BloodDonor') value: (classes at: 'Nurse') value: 'Material' value: 'donatesWith'.
-	createAssoc value: (classes at: 'BloodDonor') value: (classes at: 'HemoglobinLevel') value: 'Characterization' value: 'charHemoglobin'.
-	createAssoc value: (classes at: 'BloodDonor') value: (classes at: 'BloodType') value: 'Characterization' value: 'charBloodType'.
-	createAssoc value: (classes at: 'MedicalStaff') value: (classes at: 'Nurse') value: 'MemberOf' value: 'staffMember'.
-	createAssoc value: (classes at: 'MedicalStaff') value: (classes at: 'MobileDriveUnit') value: 'SubCollectionOf' value: 'subStaff'.
-	createAssoc value: (classes at: 'WholeBlood') value: (classes at: 'BloodPlasma') value: 'SubQuantityOf' value: 'plasmaFraction'.
-	createAssoc value: (classes at: 'BloodBag') value: (classes at: 'WholeBlood') value: 'Containment' value: 'containedBlood'.
-	(createAssoc value: (classes at: 'DonationKit') value: (classes at: 'BloodBag') value: 'ComponentOf' value: 'kitBag')
+	createAssociation value: (classesDictionary at: 'BloodDonation') value: (classesDictionary at: 'BloodDonor') value: 'Mediation' value: 'medDonor'.
+	createAssociation value: (classesDictionary at: 'BloodDonation') value: (classesDictionary at: 'Nurse') value: 'Mediation' value: 'medNurse'.
+	createAssociation value: (classesDictionary at: 'BloodDonor') value: (classesDictionary at: 'Nurse') value: 'Material' value: 'donatesWith'.
+	createAssociation value: (classesDictionary at: 'BloodDonor') value: (classesDictionary at: 'HemoglobinLevel') value: 'Characterization' value: 'charHemoglobin'.
+	createAssociation value: (classesDictionary at: 'BloodDonor') value: (classesDictionary at: 'BloodType') value: 'Characterization' value: 'charBloodType'.
+	createAssociation value: (classesDictionary at: 'MedicalStaff') value: (classesDictionary at: 'Nurse') value: 'MemberOf' value: 'staffMember'.
+	createAssociation value: (classesDictionary at: 'MedicalStaff') value: (classesDictionary at: 'MobileDriveUnit') value: 'SubCollectionOf' value: 'subStaff'.
+	createAssociation value: (classesDictionary at: 'WholeBlood') value: (classesDictionary at: 'BloodPlasma') value: 'SubQuantityOf' value: 'plasmaFraction'.
+	createAssociation value: (classesDictionary at: 'BloodBag') value: (classesDictionary at: 'WholeBlood') value: 'Containment' value: 'containedBlood'.
+	(createAssociation value: (classesDictionary at: 'DonationKit') value: (classesDictionary at: 'BloodBag') value: 'ComponentOf' value: 'kitBag')
 		appliedStereotypes first
 			essential: true;
 			inseparable: true.
-	createAssoc value: (classes at: 'Person') value: (classes at: 'Person') value: 'DomainFormal' value: 'isCompatibleDonor'.
-
+	createAssociation value: (classesDictionary at: 'Person') value: (classesDictionary at: 'Person') value: 'DomainFormal' value: 'isCompatibleDonor'.
 	^ model
 ]
 
