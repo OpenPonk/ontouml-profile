@@ -17,6 +17,12 @@ OntoUMLExamples class >> openExampleAlcohol [
 ]
 
 { #category : '*OpenPonk-OntoUML-Plugin' }
+OntoUMLExamples class >> openExampleBloodDonation [
+	<example>
+	^ self openExample: self exampleBloodDonation
+]
+
+{ #category : '*OpenPonk-OntoUML-Plugin' }
 OntoUMLExamples class >> openExampleEmptyModel [
 
 	<example>
