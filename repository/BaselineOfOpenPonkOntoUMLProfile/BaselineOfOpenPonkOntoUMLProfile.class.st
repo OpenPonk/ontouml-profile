@@ -15,7 +15,7 @@ BaselineOfOpenPonkOntoUMLProfile >> baseline: spec [
 	spec for: #common do: [ 
 		spec
 			baseline: 'OpenPonkClassEditor'
-			with: [ spec repository: 'github://OpenPonk/class-editor:v5.1.0' ].
+			with: [ spec repository: 'github://OpenPonk/class-editor:v5.1.1' ].
 		spec package: 'OpenPonk-OntoUML-Profile'.
 		spec
 			package: 'OpenPonk-OntoUML-Plugin'
