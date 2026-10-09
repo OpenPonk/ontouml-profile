@@ -39,6 +39,16 @@ OntoUMLProfileFactory class >> isAppliedTo: anEditor [
 ]
 
 { #category : 'accessing' }
+OntoUMLProfileFactory class >> legacyURIs [
+	^ #(
+		'http://www.openponk.org/OntoUML/0.1'
+		'https://openponk.org/OntoUML/0.1'
+		'http://openponk.org/OntoUML/1.0'
+		'https://openponk.org/OntoUML/1.0'
+	)
+]
+
+{ #category : 'accessing' }
 OntoUMLProfileFactory class >> profile [
 
 	<script: 'self profile inspect'>
