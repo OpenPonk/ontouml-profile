@@ -29,6 +29,26 @@ OntoUMLMemberOf >> essential: aBoolean [
 	(sharedGeneralizations at: #Meronymic) essential: aBoolean
 ]
 
+{ #category : 'accessing - Meronymic' }
+OntoUMLMemberOf >> immutablePart [
+	^ (sharedGeneralizations at: #Meronymic) immutablePart
+]
+
+{ #category : 'accessing - Meronymic' }
+OntoUMLMemberOf >> immutablePart: aBoolean [
+	(sharedGeneralizations at: #Meronymic) immutablePart: aBoolean
+]
+
+{ #category : 'accessing - Meronymic' }
+OntoUMLMemberOf >> immutableWhole [
+	^ (sharedGeneralizations at: #Meronymic) immutableWhole
+]
+
+{ #category : 'accessing - Meronymic' }
+OntoUMLMemberOf >> immutableWhole: aBoolean [
+	(sharedGeneralizations at: #Meronymic) immutableWhole: aBoolean
+]
+
 { #category : 'initialization' }
 OntoUMLMemberOf >> initializeDirectGeneralizations [
 	directGeneralizations := {

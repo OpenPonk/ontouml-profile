@@ -89,30 +89,23 @@ OntoUMLProfileFactory >> materialPair [
 
 { #category : 'parts' }
 OntoUMLProfileFactory >> meronymicPair [
+
 	<gtExample>
 	| pair stereotype |
 	pair := self newStereotype: #Meronymic to: (self metaClassNamed: 'Association').
-	pair first isAbstract: true.
 	stereotype := pair first.
 	stereotype isAbstract: true.
-	OPUMLProperty new
-		name: 'essential';
-		uuid: stereotype uuid , '-essential';
-		owningClass: stereotype;
-		type: (OPUMLPrimitiveType new name: 'Boolean');
-		defaultValue:
-			(OPUMLLiteralBoolean new
-				value: false;
-				uuid: stereotype uuid , '-essential-_defaultValue').
-	OPUMLProperty new
-		name: 'inseparable';
-		uuid: stereotype uuid , '-inseparable';
-		owningClass: stereotype;
-		type: (OPUMLPrimitiveType new name: 'Boolean');
-		defaultValue:
-			(OPUMLLiteralBoolean new
-				value: false;
-				uuid: stereotype uuid , '-inseparable-_defaultValue').
+	#( 'essential' 'inseparable' 'immutablePart' 'immutableWhole' ) do: [ :propertyName |
+			| uuidWithName |
+			uuidWithName := stereotype uuid , '-' , propertyName.
+			OPUMLProperty new
+				name: propertyName;
+				uuid: uuidWithName;
+				owningClass: stereotype;
+				type: (OPUMLPrimitiveType new name: 'Boolean');
+				defaultValue: (OPUMLLiteralBoolean new
+						 value: false;
+						 uuid: uuidWithName , '-_defaultValue') ].
 	^ pair
 ]
 
@@ -129,11 +122,12 @@ OntoUMLProfileFactory >> momentPair [
 
 { #category : 'parts' }
 OntoUMLProfileFactory >> newStereotype: aName subclassOf: aParent [
-	| stereotype |
+	| stereotype generalization |
 	stereotype := OPUMLStereotype new
 		name: aName;
 		uuid: aName.
-	OPUMLGeneralization new
+	generalization := OPUMLGeneralization new
+		uuid: aName , '-_generalization';
 		general: aParent;
 		specific: stereotype.
 	^ stereotype

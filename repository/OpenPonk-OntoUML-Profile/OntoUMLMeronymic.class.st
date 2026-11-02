@@ -7,7 +7,9 @@ Class {
 	#instVars : [
 		'base_Association',
 		'essential',
-		'inseparable'
+		'inseparable',
+		'immutablePart',
+		'immutableWhole'
 	],
 	#category : 'OpenPonk-OntoUML-Profile-Model',
 	#package : 'OpenPonk-OntoUML-Profile',
@@ -44,6 +46,26 @@ OntoUMLMeronymic >> essential [
 OntoUMLMeronymic >> essential: aBoolean [
 	""
 	essential := aBoolean
+]
+
+{ #category : 'accessing' }
+OntoUMLMeronymic >> immutablePart [
+	^ immutablePart ifNil: [ immutablePart := false ]
+]
+
+{ #category : 'accessing' }
+OntoUMLMeronymic >> immutablePart: aBoolean [
+	immutablePart := aBoolean
+]
+
+{ #category : 'accessing' }
+OntoUMLMeronymic >> immutableWhole [
+	^ immutableWhole ifNil: [ immutableWhole := false ]
+]
+
+{ #category : 'accessing' }
+OntoUMLMeronymic >> immutableWhole: aBoolean [
+	immutableWhole := aBoolean
 ]
 
 { #category : 'initialization' }

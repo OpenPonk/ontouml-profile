@@ -125,8 +125,7 @@ OntoUMLPlugin >> icon [
 { #category : 'testing' }
 OntoUMLPlugin >> isPluginFor: aModel [
 
-	^ ({ self modelClass } includes: aModel class) and: [ 
-		  self supportsProfilesOf: aModel ]
+	^ ({ self modelClass } includes: aModel class) and: [ self supportsProfilesOf: aModel ]
 ]
 
 { #category : 'accessing' }
