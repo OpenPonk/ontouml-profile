@@ -113,7 +113,7 @@ OntoUMLExamples >> associationFrom: leftSide to: rightSide [
 
 { #category : 'examples' }
 OntoUMLExamples >> bloodDonation [
-	| model profile applyStereotype createAssociation classesDictionary generalizationHealthy generalizationDeferred generalizationSet |
+	| model profile applyStereotype createAssociation classesDictionary generalizationHealthy generalizationDeferred generalizationSet generalizationDonorRole generalizationNurseRole rolesGeneralizationSet |
 	model := self emptyModel name: 'Blood Donation'.
 	profile := self profile.
 	classesDictionary := Dictionary new.
@@ -122,15 +122,15 @@ OntoUMLExamples >> bloodDonation [
 		stereotypeClass := (profile ownedStereotype detect: [ :eachStereotype | eachStereotype name = stereotypeName ]) implementationClass.
 		element applyStereotype: stereotypeClass new ].
 	createAssociation := [ :sourceElement :targetElement :stereotypeName :associationName |
-		| association sourceEndProperty targetEndProperty |
+		| association |
 		association := OPUMLAssociation new name: associationName.
-		sourceEndProperty := OPUMLProperty new
+		OPUMLProperty new
 			name: '';
 			lowerValue: (OPUMLLiteralInteger new value: 1);
 			upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
 			owningAssociation: association;
 			type: sourceElement.
-		targetEndProperty := OPUMLProperty new
+		OPUMLProperty new
 			name: '';
 			lowerValue: (OPUMLLiteralInteger new value: 1);
 			upperValue: (OPUMLLiteralUnlimitedNatural new value: 1);
@@ -151,6 +151,7 @@ OntoUMLExamples >> bloodDonation [
 		('DeferredPerson' 'Phase')
 		('BloodDonor' 'Role')
 		('Nurse' 'Role')
+		('AssignedDonationKit' 'Role')
 		('MedicalStaff' 'Collective')
 		('MobileDriveUnit' 'Collective')
 		('WholeBlood' 'Quantity')
@@ -168,12 +169,22 @@ OntoUMLExamples >> bloodDonation [
 		classesDictionary at: nameStereotypePair first put: classElement ].
 
 	self generalizationFrom: (classesDictionary at: 'FemalePerson') to: (classesDictionary at: 'Person').
-	self generalizationFrom: (classesDictionary at: 'BloodDonor') to: (classesDictionary at: 'HealthyPerson').
+	generalizationDonorRole := self generalizationFrom: (classesDictionary at: 'BloodDonor') to: (classesDictionary at: 'HealthyPerson').
+	generalizationNurseRole := self generalizationFrom: (classesDictionary at: 'Nurse') to: (classesDictionary at: 'HealthyPerson').
+	rolesGeneralizationSet := (self generalizationSetOn: { generalizationDonorRole . generalizationNurseRole })
+		name: 'gsDonationRoles';
+		isDisjoint: true;
+		isCovering: false.
+	model packagedElements add: rolesGeneralizationSet.
 	self generalizationFrom: (classesDictionary at: 'BloodDonor') to: (classesDictionary at: 'ClinicalClient').
+	self generalizationFrom: (classesDictionary at: 'AssignedDonationKit') to: (classesDictionary at: 'DonationKit').
+	self generalizationFrom: (classesDictionary at: 'AssignedDonationKit') to: (classesDictionary at: 'ClinicalClient').
 	self generalizationFrom: (classesDictionary at: 'HealthyPerson') to: (classesDictionary at: 'EligibleEntity').
-	self generalizationFrom: (classesDictionary at: 'Nurse') to: (classesDictionary at: 'Person').
+	self generalizationFrom: (classesDictionary at: 'ClinicalClient') to: (classesDictionary at: 'EligibleEntity').
 	self generalizationFrom: (classesDictionary at: 'Person') to: (classesDictionary at: 'PhysicalEntity').
-	self generalizationFrom: (classesDictionary at: 'Person') to: (classesDictionary at: 'InsuredEntity').
+	self generalizationFrom: (classesDictionary at: 'BloodBag') to: (classesDictionary at: 'PhysicalEntity').
+	self generalizationFrom: (classesDictionary at: 'DonationKit') to: (classesDictionary at: 'InsuredEntity').
+	self generalizationFrom: (classesDictionary at: 'DeferredPerson') to: (classesDictionary at: 'InsuredEntity').
 	generalizationHealthy := self generalizationFrom: (classesDictionary at: 'HealthyPerson') to: (classesDictionary at: 'Person').
 	generalizationDeferred := self generalizationFrom: (classesDictionary at: 'DeferredPerson') to: (classesDictionary at: 'Person').
 	generalizationSet := (self generalizationSetOn: { generalizationHealthy . generalizationDeferred })
@@ -185,17 +196,17 @@ OntoUMLExamples >> bloodDonation [
 	createAssociation value: (classesDictionary at: 'BloodDonation') value: (classesDictionary at: 'BloodDonor') value: 'Mediation' value: 'medDonor'.
 	createAssociation value: (classesDictionary at: 'BloodDonation') value: (classesDictionary at: 'Nurse') value: 'Mediation' value: 'medNurse'.
 	createAssociation value: (classesDictionary at: 'BloodDonor') value: (classesDictionary at: 'Nurse') value: 'Material' value: 'donatesWith'.
-	createAssociation value: (classesDictionary at: 'BloodDonor') value: (classesDictionary at: 'HemoglobinLevel') value: 'Characterization' value: 'charHemoglobin'.
-	createAssociation value: (classesDictionary at: 'BloodDonor') value: (classesDictionary at: 'BloodType') value: 'Characterization' value: 'charBloodType'.
+	createAssociation value: (classesDictionary at: 'Person') value: (classesDictionary at: 'HemoglobinLevel') value: 'Characterization' value: 'charHemoglobin'.
+	createAssociation value: (classesDictionary at: 'Person') value: (classesDictionary at: 'BloodType') value: 'Characterization' value: 'charBloodType'.
 	createAssociation value: (classesDictionary at: 'MedicalStaff') value: (classesDictionary at: 'Nurse') value: 'MemberOf' value: 'staffMember'.
 	createAssociation value: (classesDictionary at: 'MedicalStaff') value: (classesDictionary at: 'MobileDriveUnit') value: 'SubCollectionOf' value: 'subStaff'.
 	createAssociation value: (classesDictionary at: 'WholeBlood') value: (classesDictionary at: 'BloodPlasma') value: 'SubQuantityOf' value: 'plasmaFraction'.
 	createAssociation value: (classesDictionary at: 'BloodBag') value: (classesDictionary at: 'WholeBlood') value: 'Containment' value: 'containedBlood'.
-	(createAssociation value: (classesDictionary at: 'DonationKit') value: (classesDictionary at: 'BloodBag') value: 'ComponentOf' value: 'kitBag')
+	(createAssociation value: (classesDictionary at: 'AssignedDonationKit') value: (classesDictionary at: 'BloodBag') value: 'ComponentOf' value: 'kitBag')
 		appliedStereotypes first
 			essential: true;
 			inseparable: true.
-	createAssociation value: (classesDictionary at: 'Person') value: (classesDictionary at: 'Person') value: 'DomainFormal' value: 'isCompatibleDonor'.
+	createAssociation value: (classesDictionary at: 'HealthyPerson') value: (classesDictionary at: 'DeferredPerson') value: 'DomainFormal' value: 'isCompatibleDonor'.
 	^ model
 ]
 
@@ -252,6 +263,16 @@ OntoUMLExamples >> roleMixinPattern1 [
 		applyStereotypeNamed: #Role
 		toName: 'Corporate Customer'
 		in: model.
+	self applyStereotypeNamed: #Role toName: 'Supplier' in: model.
+	self applyStereotypeNamed: #Relator toName: 'Contract' in: model.
+	self
+		applyStereotypeNamed: #Mediation
+		toNamePair: #( 'Contract' 'Customer' )
+		in: model.
+	self
+		applyStereotypeNamed: #Mediation
+		toNamePair: #( 'Contract' 'Supplier' )
+		in: model.
 	^ model
 ]
 
@@ -259,25 +280,37 @@ OntoUMLExamples >> roleMixinPattern1 [
 OntoUMLExamples >> roleMixinPattern1Base [
 	"https://ontouml.org/ufo/wiki/rolemixin/ Pattern 1"
 
-	| model customer person company individualCustomer corporateCustomer gs |
+	| model customer person company individualCustomer corporateCustomer supplier contract gs customerMediation supplierMediation |
 	model := self emptyModel.
 	(customer := OPUMLClass new name: 'Customer') isAbstract: true.
 	person := OPUMLClass new name: 'Person'.
 	company := OPUMLClass new name: 'Company'.
 	individualCustomer := OPUMLClass new name: 'Individual Customer'.
 	corporateCustomer := OPUMLClass new name: 'Corporate Customer'.
+	supplier := OPUMLClass new name: 'Supplier'.
+	contract := OPUMLClass new name: 'Contract'.
 	gs := (self generalizationSetOn: {
 			       (self generalizationFrom: individualCustomer to: customer).
 			       (self generalizationFrom: corporateCustomer to: customer) })
-		      name: 'gs1'.
+		      name: 'gs1';
+		      isDisjoint: true;
+		      isCovering: true;
+		      yourself.
 	self generalizationFrom: individualCustomer to: person.
 	self generalizationFrom: corporateCustomer to: company.
+	self generalizationFrom: supplier to: company.
+	customerMediation := self associationFrom: contract to: customer.
+	supplierMediation := self associationFrom: contract to: supplier.
 	model packagedElements
 		add: customer;
 		add: person;
 		add: company;
 		add: individualCustomer;
 		add: corporateCustomer;
+		add: supplier;
+		add: contract;
+		add: customerMediation;
+		add: supplierMediation;
 		add: gs.
 	^ model
 ]
