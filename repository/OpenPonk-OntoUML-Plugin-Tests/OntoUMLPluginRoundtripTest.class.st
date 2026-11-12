@@ -4,9 +4,9 @@ Verifies the serialization and deserialization roundtrip persistence for OntoUML
 Class {
 	#name : 'OntoUMLPluginRoundtripTest',
 	#superclass : 'OPAbstractPluginExampleRoundtripTest',
-	#category : 'OpenPonk-OntoUML-Plugin-Tests',
-	#package : 'OpenPonk-OntoUML-Plugin',
-	#tag : 'Tests'
+	#category : 'OpenPonk-OntoUML-Plugin-Tests-Plugin',
+	#package : 'OpenPonk-OntoUML-Plugin-Tests',
+	#tag : 'Plugin'
 }
 
 { #category : 'accessing' }

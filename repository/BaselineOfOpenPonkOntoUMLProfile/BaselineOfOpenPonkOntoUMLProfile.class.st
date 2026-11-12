@@ -18,8 +18,14 @@ BaselineOfOpenPonkOntoUMLProfile >> baseline: spec [
 			with: [ spec repository: 'github://OpenPonk/class-editor' ].
 		spec package: 'OpenPonk-OntoUML-Profile'.
 		spec
+			package: 'OpenPonk-OntoUML-Profile-Tests'
+			with: [ spec requires: #( 'OpenPonk-OntoUML-Profile' ) ].
+		spec
 			package: 'OpenPonk-OntoUML-Plugin'
 			with: [ spec requires: #( 'OpenPonk-OntoUML-Profile' ) ].
-		spec group: 'plugin' with: #( 'OpenPonk-OntoUML-Plugin' ).
+		spec
+			package: 'OpenPonk-OntoUML-Plugin-Tests'
+			with: [ spec requires: #( 'OpenPonk-OntoUML-Plugin' ) ].
+		spec group: 'plugin' with: #( 'OpenPonk-OntoUML-Plugin' 'OpenPonk-OntoUML-Profile-Tests' 'OpenPonk-OntoUML-Plugin-Tests' ).
 		spec group: 'default' with: #( OpenPonkClassEditor plugin ) ]
 ]

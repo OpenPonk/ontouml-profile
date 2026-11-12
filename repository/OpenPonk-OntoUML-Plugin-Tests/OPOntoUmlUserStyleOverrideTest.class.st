@@ -11,9 +11,9 @@ Class {
 		'umlClass',
 		'shape'
 	],
-	#category : 'OpenPonk-OntoUML-Plugin-Tests',
-	#package : 'OpenPonk-OntoUML-Plugin',
-	#tag : 'Tests'
+	#category : 'OpenPonk-OntoUML-Plugin-Tests-Plugin',
+	#package : 'OpenPonk-OntoUML-Plugin-Tests',
+	#tag : 'Plugin'
 }
 
 { #category : 'running' }

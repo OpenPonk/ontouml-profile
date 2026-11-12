@@ -4,9 +4,9 @@ I am a backward compatibility test class verifying that OntoUML projects saved i
 Class {
 	#name : 'OPOntouml304oppProjectLoadTest',
 	#superclass : 'OPLegacyProjectLoadTest',
-	#category : 'OpenPonk-OntoUML-Plugin-Tests',
-	#package : 'OpenPonk-OntoUML-Plugin',
-	#tag : 'Tests'
+	#category : 'OpenPonk-OntoUML-Plugin-Tests-Plugin',
+	#package : 'OpenPonk-OntoUML-Plugin-Tests',
+	#tag : 'Plugin'
 }
 
 { #category : 'files' }

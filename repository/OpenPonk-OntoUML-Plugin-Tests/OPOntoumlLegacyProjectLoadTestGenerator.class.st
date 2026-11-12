@@ -4,9 +4,9 @@ I am a testing utility responsible for generating backward-compatibility test pa
 Class {
 	#name : 'OPOntoumlLegacyProjectLoadTestGenerator',
 	#superclass : 'OPLegacyProjectLoadTestGenerator',
-	#category : 'OpenPonk-OntoUML-Plugin-Tests',
-	#package : 'OpenPonk-OntoUML-Plugin',
-	#tag : 'Tests'
+	#category : 'OpenPonk-OntoUML-Plugin-Tests-Plugin',
+	#package : 'OpenPonk-OntoUML-Plugin-Tests',
+	#tag : 'Plugin'
 }
 
 { #category : 'hooks' }
