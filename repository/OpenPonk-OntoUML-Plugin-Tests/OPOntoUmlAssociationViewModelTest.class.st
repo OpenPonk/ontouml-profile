@@ -54,24 +54,35 @@ OPOntoUmlAssociationViewModelTest >> tearDown [
 
 { #category : 'tests' }
 OPOntoUmlAssociationViewModelTest >> testAssociationWithComponentOfEssentialAndInseparableCanBeReadAndWritten [
-	| componentOfStereotype descriptions essentialDesc inseparableDesc |
+
+	| componentOfStereotype descriptions essentialDescription inseparableDescription |
 	componentOfStereotype := OntoUMLComponentOf new.
 	association applyStereotype: componentOfStereotype.
 
 	descriptions := (OPUmlStereotypeDescriptions for: viewModel) descriptions.
-	essentialDesc := descriptions detect: [ :each | each label = 'Is Essential' ].
-	inseparableDesc := descriptions detect: [ :each | each label = 'Is Inseparable' ].
+	essentialDescription := descriptions detect: [ :each | each label = 'Is Essential' ].
+	inseparableDescription := descriptions detect: [ :each | each label = 'Is Inseparable' ].
 
-	self deny: (essentialDesc accessor read: viewModel).
-	self deny: (inseparableDesc accessor read: viewModel).
+	self deny: (essentialDescription accessor read: viewModel) description: 'ComponentOf essential property must initially be false'.
+	self
+		deny: (inseparableDescription accessor read: viewModel)
+		description: 'ComponentOf inseparable property must initially be false'.
 
-	essentialDesc accessor write: true to: viewModel.
-	self assert: componentOfStereotype essential.
-	self assert: (essentialDesc accessor read: viewModel).
+	essentialDescription accessor write: true to: viewModel.
+	self
+		assert: componentOfStereotype essential
+		description: 'ComponentOf essential attribute must be true after writing through accessor'.
+	self
+		assert: (essentialDescription accessor read: viewModel)
+		description: 'Essential accessor must read true after enabling essential'.
 
-	inseparableDesc accessor write: true to: viewModel.
-	self assert: componentOfStereotype inseparable.
-	self assert: (inseparableDesc accessor read: viewModel)
+	inseparableDescription accessor write: true to: viewModel.
+	self
+		assert: componentOfStereotype inseparable
+		description: 'ComponentOf inseparable attribute must be true after writing through accessor'.
+	self
+		assert: (inseparableDescription accessor read: viewModel)
+		description: 'Inseparable accessor must read true after enabling inseparable'
 ]
 
 { #category : 'tests' }
@@ -98,6 +109,7 @@ OPOntoUmlAssociationViewModelTest >> testAssociationWithComponentOfHasEssentialA
 
 { #category : 'tests' }
 OPOntoUmlAssociationViewModelTest >> testAssociationWithComponentOfImmutablePartAndImmutableWholeCanBeReadAndWritten [
+
 	| componentOfStereotype descriptions immutablePartDescription immutableWholeDescription |
 	componentOfStereotype := OntoUMLComponentOf new.
 	association applyStereotype: componentOfStereotype.
@@ -106,68 +118,82 @@ OPOntoUmlAssociationViewModelTest >> testAssociationWithComponentOfImmutablePart
 	immutablePartDescription := descriptions detect: [ :eachDescription | eachDescription label = 'Is Immutable Part' ].
 	immutableWholeDescription := descriptions detect: [ :eachDescription | eachDescription label = 'Is Immutable Whole' ].
 
-	self deny: (immutablePartDescription accessor read: viewModel).
-	self deny: (immutableWholeDescription accessor read: viewModel).
+	self
+		deny: (immutablePartDescription accessor read: viewModel)
+		description: 'ComponentOf immutablePart property must initially be false'.
+	self
+		deny: (immutableWholeDescription accessor read: viewModel)
+		description: 'ComponentOf immutableWhole property must initially be false'.
 
 	immutablePartDescription accessor write: true to: viewModel.
-	self assert: componentOfStereotype immutablePart.
-	self assert: (immutablePartDescription accessor read: viewModel).
+	self
+		assert: componentOfStereotype immutablePart
+		description: 'ComponentOf immutablePart attribute must be true after writing through accessor'.
+	self
+		assert: (immutablePartDescription accessor read: viewModel)
+		description: 'ImmutablePart accessor must read true after enabling immutablePart'.
 
 	immutableWholeDescription accessor write: true to: viewModel.
-	self assert: componentOfStereotype immutableWhole.
-	self assert: (immutableWholeDescription accessor read: viewModel)
+	self
+		assert: componentOfStereotype immutableWhole
+		description: 'ComponentOf immutableWhole attribute must be true after writing through accessor'.
+	self
+		assert: (immutableWholeDescription accessor read: viewModel)
+		description: 'ImmutableWhole accessor must read true after enabling immutableWhole'
 ]
 
 { #category : 'tests' }
 OPOntoUmlAssociationViewModelTest >> testAssociationWithMeronymicSubtypesHasAllFourModalDescriptions [
+
 	| meronymicClasses |
 	meronymicClasses := {
-		OntoUMLComponentOf.
-		OntoUMLMemberOf.
-		OntoUMLSubCollectionOf.
-		OntoUMLSubQuantityOf }.
+		                    OntoUMLComponentOf.
+		                    OntoUMLMemberOf.
+		                    OntoUMLSubCollectionOf.
+		                    OntoUMLSubQuantityOf }.
 
 	meronymicClasses do: [ :eachStereotypeClass |
-		| descriptions labels |
-		viewModel removeStereotypesIn: association.
-		association applyStereotype: eachStereotypeClass new.
-		descriptions := (OPUmlStereotypeDescriptions for: viewModel) descriptions.
-		labels := descriptions collect: #label.
-		self assertCollection: labels includesAll: {
-			'Is Essential'.
-			'Is Inseparable'.
-			'Is Immutable Part'.
-			'Is Immutable Whole' } ]
+			| descriptions labels |
+			viewModel removeStereotypesIn: association.
+			association applyStereotype: eachStereotypeClass new.
+			descriptions := (OPUmlStereotypeDescriptions for: viewModel) descriptions.
+			labels := descriptions collect: #label.
+			self assertCollection: labels hasSameElements: { 'Is Essential'. 'Is Inseparable'. 'Is Immutable Part'. 'Is Immutable Whole' } ]
 ]
 
 { #category : 'tests' }
 OPOntoUmlAssociationViewModelTest >> testChangingStereotypeInFormRebuildsFormWithStereotypeAttributes [
-	| form stereotypeDropListBinding checkboxLabelsAfterChange |
-	project models first profileApplications add:
-		(OPUMLProfileApplication new appliedProfile: OntoUMLProfileFactory profile).
+
+	| form checkboxLabelsBeforeChange stereotypeDropListBinding checkboxLabelsAfterChange modalLabels |
+	modalLabels := { 'Is Essential'. 'Is Inseparable'. 'Is Immutable Part'. 'Is Immutable Whole' }.
+	project models first profileApplications add: (OPUMLProfileApplication new appliedProfile: OntoUMLProfileFactory profile).
 	form := OPPropertiesForm new.
 	form viewModel: viewModel.
 
+	checkboxLabelsBeforeChange := form bindings
+		                              select: [ :eachBinding | eachBinding isKindOf: OPFormCheckboxBinding ]
+		                              thenCollect: [ :eachBinding | eachBinding presenter label ].
+	self denyCollection: checkboxLabelsBeforeChange includesAny: modalLabels.
+
 	stereotypeDropListBinding := form bindings detect: [ :eachBinding |
-		eachBinding description isNotNil and: [ eachBinding description label = 'Stereotype' ] ].
+		                             eachBinding description isNotNil and: [ eachBinding description label = 'Stereotype' ] ].
 	stereotypeDropListBinding presenter selectItem: 'MemberOf'.
 
-	checkboxLabelsAfterChange := (form bindings
-		select: [ :eachBinding | eachBinding isKindOf: OPFormCheckboxBinding ])
-		collect: [ :eachBinding | eachBinding presenter label ].
+	self assertCollection: (association appliedStereotypes collect: #class) hasSameElements: { OntoUMLMemberOf }.
 
-	self assertCollection: checkboxLabelsAfterChange includesAll: {
-		'Is Essential'.
-		'Is Inseparable'.
-		'Is Immutable Part'.
-		'Is Immutable Whole' }
+	checkboxLabelsAfterChange := form bindings
+		                             select: [ :eachBinding | eachBinding isKindOf: OPFormCheckboxBinding ]
+		                             thenCollect: [ :eachBinding | eachBinding presenter label ].
+
+	self assertCollection: checkboxLabelsAfterChange includesAll: modalLabels
 ]
 
 { #category : 'tests' }
 OPOntoUmlAssociationViewModelTest >> testCreatingMemberOfAssociationFromPaletteRebuildsFormWithStereotypeAttributes [
-	| diagramController palette memberOfEntry form assocController checkboxLabels |
-	project models first profileApplications add:
-		(OPUMLProfileApplication new appliedProfile: OntoUMLProfileFactory profile).
+
+	| diagramController palette memberOfEntry form associationController checkboxLabelsBefore checkboxLabels modalLabels |
+	modalLabels := { 'Is Essential'. 'Is Inseparable'. 'Is Immutable Part'. 'Is Immutable Whole' }.
+	project models first profileApplications add: (OPUMLProfileApplication new appliedProfile: OntoUMLProfileFactory profile).
 
 	diagramController := OPUmlPackageDiagramController new.
 	diagramController viewModel: (registry viewModelFor: project models first).
@@ -176,24 +202,29 @@ OPOntoUmlAssociationViewModelTest >> testCreatingMemberOfAssociationFromPaletteR
 	diagramController initializeProfile: OntoUMLProfileFactory profile palette: palette.
 
 	memberOfEntry := palette entries detect: [ :eachEntry | eachEntry label = 'MemberOf' ].
-	self assert: memberOfEntry isNotNil.
+	self assert: memberOfEntry class identicalTo: OPPaletteEntry.
+	self assert: memberOfEntry label equals: 'MemberOf'.
+	self assert: memberOfEntry tool class identicalTo: OPConnectionCreationTool.
 
 	viewModel removeStereotypesIn: association.
 	form := OPPropertiesForm new.
 	form viewModel: viewModel.
 
-	assocController := OPUmlAssociationController new.
-	assocController viewModel: viewModel.
+	checkboxLabelsBefore := form bindings
+		                        select: [ :eachBinding | eachBinding isKindOf: OPFormCheckboxBinding ]
+		                        thenCollect: [ :eachBinding | eachBinding presenter label ].
+	self denyCollection: checkboxLabelsBefore includesAny: modalLabels.
 
-	(memberOfEntry tool instVarNamed: #onComplete) value: assocController.
+	associationController := OPUmlAssociationController new.
+	associationController viewModel: viewModel.
 
-	checkboxLabels := (form bindings
-		select: [ :eachBinding | eachBinding isKindOf: OPFormCheckboxBinding ])
-		collect: [ :eachBinding | eachBinding presenter label ].
+	(memberOfEntry tool instVarNamed: #onComplete) value: associationController.
 
-	self assertCollection: checkboxLabels includesAll: {
-		'Is Essential'.
-		'Is Inseparable'.
-		'Is Immutable Part'.
-		'Is Immutable Whole' }
+	self assertCollection: (association appliedStereotypes collect: #class) hasSameElements: { OntoUMLMemberOf }.
+
+	checkboxLabels := form bindings
+		                  select: [ :eachBinding | eachBinding isKindOf: OPFormCheckboxBinding ]
+		                  thenCollect: [ :eachBinding | eachBinding presenter label ].
+
+	self assertCollection: checkboxLabels includesAll: modalLabels
 ]
