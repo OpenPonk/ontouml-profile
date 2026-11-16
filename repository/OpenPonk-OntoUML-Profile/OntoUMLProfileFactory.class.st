@@ -182,11 +182,12 @@ OntoUMLProfileFactory >> profile [
 
 { #category : 'parts' }
 OntoUMLProfileFactory >> profilePackage [
+
 	^ OPUMLProfile new
-		name: 'OntoUML';
-		uuid: '_0';
-		URI: 'https://openponk.org/OntoUML/1.0';
-		implementationPackage: 'OntoUML-Profile';
-		implementationPrefix: 'OntoUML';
-		yourself
+		  name: 'OntoUML';
+		  uuid: '_0';
+		  URI: 'https://openponk.org/OntoUML/1.0';
+		  implementationPackage: 'OpenPonk-OntoUML-Profile';
+		  implementationPrefix: 'OntoUML';
+		  yourself
 ]
