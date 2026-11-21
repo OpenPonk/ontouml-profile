@@ -20,11 +20,6 @@ OntoUMLPlugin class >> openNotationStyleEditor [
 ]
 
 { #category : 'accessing' }
-OntoUMLPlugin class >> repositoryName [
-	^ #'ontouml-editor'
-]
-
-{ #category : 'accessing' }
 OntoUMLPlugin class >> requiredPluginClasses [
 	"Answers prerequisite plugin classes needed by OntoUML."
 
