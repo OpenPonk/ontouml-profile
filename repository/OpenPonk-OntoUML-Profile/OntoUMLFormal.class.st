@@ -28,7 +28,7 @@ OntoUMLFormal >> base_Association: anAssociation [
 		on: self identity
 		thisSelector: #base_Association
 		otherSelector: #extension_Formal
-		from: anOldBase_Association
+		updateFrom: anOldBase_Association
 		to: base_Association
 ]
 

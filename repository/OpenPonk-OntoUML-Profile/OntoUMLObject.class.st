@@ -28,7 +28,7 @@ OntoUMLObject >> base_Class: aClass [
 		on: self identity
 		thisSelector: #base_Class
 		otherSelector: #extension_Object
-		from: anOldBase_Class
+		updateFrom: anOldBase_Class
 		to: base_Class
 ]
 
